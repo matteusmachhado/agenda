@@ -1,11 +1,10 @@
-﻿
-namespace Agenda.Domain.Enums
+﻿namespace Agenda.Domain.Enums
 {
     public enum AvailabilityType
     {
-        Weekdays = 0,
-        WeekdaysAndSaturday = 1,
-        WeekdaysAndSaturdayAndSunday = 2,
-        WeekdaysAndSaturdayAndSundayAndHolidays = 3,
+        Weekdays = 1,
+        WeekdaysAndSaturday = 5,
+        WeekdaysAndSaturdayAndSunday = 10,
+        WeekdaysAndSaturdayAndSundayAndHolidays = 15,
     }
 }

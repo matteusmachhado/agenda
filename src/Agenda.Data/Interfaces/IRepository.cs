@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Agenda.Data.Interfaces
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : Entity
+    public interface IRepository<TEntity> : IDisposable where TEntity : BaseEntity
     {
         Task<IEnumerable<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> GetById(Guid id);

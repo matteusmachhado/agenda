@@ -2,7 +2,7 @@
 
 namespace Agenda.Domain.Entities
 {
-    public class Schedule : Entity
+    public class Schedule : BaseEntity
     {
         public Service Service { get; private set; }
         public Guid ServiceId { get; private set; }

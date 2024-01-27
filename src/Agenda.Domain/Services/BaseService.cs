@@ -1,4 +1,4 @@
-﻿using Agenda.Domain.DTO;
+﻿using Agenda.Domain.DTOs;
 using Agenda.Domain.Entities;
 using Agenda.Domain.Interfaces;
 using FluentValidation;
@@ -6,10 +6,10 @@ using FluentValidation.Results;
 
 namespace Agenda.Domain.Services
 {
-    public abstract class Service
+    public abstract class BaseService
     {
-        private readonly INotificadorService _notificador;
-        protected Service(INotificadorService notificador)
+        private readonly INotificationService _notificador;
+        protected BaseService(INotificationService notificador)
         {
             _notificador = notificador;
         }
@@ -27,7 +27,7 @@ namespace Agenda.Domain.Services
             _notificador.Handle(new Notification(mensagem));
         }
 
-        protected bool ExecutarValidacao<TValidator, TEntity>(TValidator validacao, TEntity entidade) where TValidator : AbstractValidator<TEntity> where TEntity : Entity
+        protected bool ExecutarValidacao<TValidator, TEntity>(TValidator validacao, TEntity entidade) where TValidator : AbstractValidator<TEntity> where TEntity : BaseEntity
         {
             var validator = validacao.Validate(entidade);
 

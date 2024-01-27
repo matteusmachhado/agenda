@@ -1,4 +1,5 @@
 ﻿using Agenda.Data.Context;
+using Agenda.WebApi.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,7 @@ namespace Agenda.WebApi.Configurations
 {
     public static class IdentityConfig
     {
-        public static IServiceCollection AddIdentityConfig(this IServiceCollection services,
-           IConfiguration configuration)
+        public static IServiceCollection AddIdentityConfig(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AgendaAuthDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
@@ -18,6 +18,7 @@ namespace Agenda.WebApi.Configurations
             services.AddDefaultIdentity<IdentityUser>()
                .AddRoles<IdentityRole>()
                .AddEntityFrameworkStores<AgendaAuthDbContext>()
+               .AddErrorDescriber<IdentityMensagensPortugues>()
                .AddDefaultTokenProviders();
 
             // Jwt configs 

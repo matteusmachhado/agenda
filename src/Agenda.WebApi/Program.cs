@@ -1,5 +1,7 @@
 
+using Agenda.Domain.Entities;
 using Agenda.WebApi.Configurations;
+using Asp.Versioning.ApiExplorer;
 
 namespace Agenda.WebApi
 {
@@ -9,13 +11,19 @@ namespace Agenda.WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddApiConfig();
+            builder.Services.AddApiConfig(builder.Configuration);
 
             builder.Services.AddIdentityConfig(builder.Configuration);
+
+            builder.Services.AddSwaggerConfig();
+
+            builder.Services.ResolveDependencies();
 
             var app = builder.Build();
 
             app.UseApiConfig(app.Environment);
+
+            app.UseSwaggerConfig();
 
             app.Run();
         }

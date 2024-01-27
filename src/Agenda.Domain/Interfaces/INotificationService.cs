@@ -1,11 +1,11 @@
-﻿using Agenda.Domain.DTO;
+﻿using Agenda.Domain.DTOs;
 
 namespace Agenda.Domain.Interfaces
 {
-    public interface INotificadorService
+    public interface INotificationService
     {
         bool HasNotification();
         List<Notification> Notifications();
-        void Handle(Notification notificacao);
+        void Handle(Notification notification);
     }
 }

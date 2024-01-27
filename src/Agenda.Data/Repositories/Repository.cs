@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Agenda.Data.Repositories
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
     {
         protected readonly AgendaDbContext Db;
         protected readonly DbSet<TEntity> DbSet;

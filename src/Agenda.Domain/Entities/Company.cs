@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Agenda.Domain.Entities
 {
-    public class Company : Entity
+    public class Company : BaseEntity
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

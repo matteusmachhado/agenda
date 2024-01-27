@@ -2,7 +2,7 @@
 
 namespace Agenda.Domain.Entities
 {
-    public class Service : Entity
+    public class Service : BaseEntity
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

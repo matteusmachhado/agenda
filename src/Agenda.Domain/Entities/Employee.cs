@@ -1,7 +1,7 @@
 ﻿
 namespace Agenda.Domain.Entities
 {
-    public class Employee : Entity
+    public class Employee : BaseEntity
     {
         public string Name { get; private set; }
         public TimeOnly StartWork { get; private set; }

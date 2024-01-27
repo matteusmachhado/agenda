@@ -1,4 +1,4 @@
-﻿using Agenda.Domain.DTO;
+﻿using Agenda.Domain.DTOs;
 using Agenda.Domain.Interfaces;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +8,9 @@ namespace Agenda.WebApi.Controllers
     [ApiController]
     public abstract class MainController : ControllerBase
     {
-        private readonly INotificadorService _notifier;
+        private readonly INotificationService _notifier;
 
-        protected MainController(INotificadorService notifier)
+        protected MainController(INotificationService notifier)
         {
             _notifier = notifier;
         }

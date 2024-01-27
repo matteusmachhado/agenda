@@ -1,14 +1,19 @@
-﻿using Asp.Versioning;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+﻿using Agenda.Data.Context;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Agenda.WebApi.Configurations
 {
     public static class ApiConfig
     {
-        public static IServiceCollection AddApiConfig(this IServiceCollection services)
+        public static IServiceCollection AddApiConfig(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddDbContext<AgendaDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            });
+
             services.AddControllers();
 
             services.AddApiVersioning(options =>
@@ -16,11 +21,12 @@ namespace Agenda.WebApi.Configurations
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ReportApiVersions = true;
+            })
+            .AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
-
-            services.AddEndpointsApiExplorer();
-
-            services.AddSwaggerGen();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

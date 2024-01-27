@@ -1,7 +1,7 @@
 ﻿
 namespace Agenda.Domain.Entities
 {
-    public abstract class Entity
+    public abstract class BaseEntity
     {
         public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
@@ -9,14 +9,14 @@ namespace Agenda.Domain.Entities
         public Guid CreateUserId { get; set; }
         public Guid? UpdateUserId { get; set; }
 
-        protected Entity()
+        protected BaseEntity()
         {
             Id = Guid.NewGuid();
         }
 
         public override bool Equals(object obj)
         {
-            var compareTo = obj as Entity;
+            var compareTo = obj as BaseEntity;
 
             if (ReferenceEquals(this, compareTo)) return true;
             if (ReferenceEquals(null, compareTo)) return false;
@@ -24,7 +24,7 @@ namespace Agenda.Domain.Entities
             return Id.Equals(compareTo.Id);
         }
 
-        public static bool operator ==(Entity a, Entity b)
+        public static bool operator ==(BaseEntity a, BaseEntity b)
         {
             if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
                 return true;
@@ -35,7 +35,7 @@ namespace Agenda.Domain.Entities
             return a.Equals(b);
         }
 
-        public static bool operator !=(Entity a, Entity b)
+        public static bool operator !=(BaseEntity a, BaseEntity b)
         {
             return !(a == b);
         }

@@ -18,12 +18,14 @@ namespace Agenda.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<IdentityUser>().ToTable("tb_user");
-            modelBuilder.Entity<IdentityRole>().ToTable("tb_role");
-            modelBuilder.Entity<IdentityUserRole<string>>().ToTable("tb_userrole");
-            modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("tb_roleclaim");
-            modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("tb_userclaim");
-            modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("tb_userlogin");
+            modelBuilder.Entity<IdentityUser>().ToTable("tb_users");
+            modelBuilder.Entity<IdentityRole>().ToTable("tb_roles");
+            modelBuilder.Entity<IdentityUserRole<string>>().ToTable("tb_userroles");
+            modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("tb_roleclaims");
+            modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("tb_userclaims");
+            modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("tb_userlogins");
+            modelBuilder.Entity<IdentityUserToken<string>>().ToTable("tb_usertokens");
+
         }
     }
 }

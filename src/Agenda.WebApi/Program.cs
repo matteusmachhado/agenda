@@ -1,7 +1,5 @@
 
-using Agenda.Domain.Entities;
 using Agenda.WebApi.Configurations;
-using Asp.Versioning.ApiExplorer;
 
 namespace Agenda.WebApi
 {

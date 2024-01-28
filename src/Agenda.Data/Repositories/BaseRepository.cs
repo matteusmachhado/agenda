@@ -1,17 +1,17 @@
 ﻿using Agenda.Data.Context;
-using Agenda.Data.Mapping;
+using Agenda.Data.Interfaces;
 using Agenda.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Agenda.Data.Repositories
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
     {
         protected readonly AgendaDbContext Db;
         protected readonly DbSet<TEntity> DbSet;
 
-        protected Repository(AgendaDbContext db)
+        protected BaseRepository(AgendaDbContext db)
         {
             Db = db;
             DbSet = db.Set<TEntity>();

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Agenda.Entities.Entities.Base;
 
-namespace Agenda.Domain.Entities
+namespace Agenda.Entities.Entities
 {
     public class Company : BaseEntity
     {

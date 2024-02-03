@@ -15,6 +15,8 @@ namespace Agenda.WebApi
 
             builder.Services.AddSwaggerConfig();
 
+            builder.Services.RegisterMediatR();
+
             builder.Services.ResolveDependencies();
 
             var app = builder.Build();

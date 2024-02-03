@@ -1,5 +1,5 @@
 ﻿using Agenda.Domain.Interfaces;
-using Agenda.Domain.ViewModels.Auth;
+using Agenda.Entities.ViewModels.Auth;
 using Agenda.WebApi.Configurations;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Identity;

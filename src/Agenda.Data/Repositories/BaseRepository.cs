@@ -1,6 +1,6 @@
 ﻿using Agenda.Data.Context;
 using Agenda.Data.Interfaces;
-using Agenda.Domain.Entities;
+using Agenda.Entities.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

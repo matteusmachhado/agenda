@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Agenda.Domain\Agenda.Domain.csproj" />
+    <Folder Include="Mapping\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapping\" />
+    <ProjectReference Include="..\Agenda.Entities\Agenda.Entities.csproj" />
   </ItemGroup>
 
 </Project>

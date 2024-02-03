@@ -1,4 +1,4 @@
-﻿namespace Agenda.Domain.ViewModels.Auth
+﻿namespace Agenda.Entities.ViewModels.Auth
 {
     public class LoginResponseViewModel
     {

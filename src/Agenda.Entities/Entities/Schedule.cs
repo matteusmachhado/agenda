@@ -1,6 +1,7 @@
-﻿using Agenda.Domain.Enums;
+﻿using Agenda.Entities.Entities.Base;
+using Agenda.Entities.Enums;
 
-namespace Agenda.Domain.Entities
+namespace Agenda.Entities.Entities
 {
     public class Schedule : BaseEntity
     {

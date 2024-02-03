@@ -1,5 +1,5 @@
 ﻿
-namespace Agenda.Domain.DTOs
+namespace Agenda.Entities.DTOs
 {
     public class Notification
     {

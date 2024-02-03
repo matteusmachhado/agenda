@@ -1,5 +1,7 @@
 ﻿
-namespace Agenda.Domain.Entities
+using Agenda.Entities.Entities.Base;
+
+namespace Agenda.Entities.Entities
 {
     public class Employee : BaseEntity
     {

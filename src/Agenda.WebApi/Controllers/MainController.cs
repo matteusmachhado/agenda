@@ -1,4 +1,4 @@
-﻿using Agenda.Domain.DTOs;
+﻿using Agenda.Entities.DTOs;
 using Agenda.Domain.Interfaces;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,4 @@
-﻿using Agenda.Domain.Entities;
+﻿using Agenda.Entities.Entities.Base;
 using System.Linq.Expressions;
 
 namespace Agenda.Data.Interfaces

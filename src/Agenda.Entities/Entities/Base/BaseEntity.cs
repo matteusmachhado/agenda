@@ -1,5 +1,4 @@
-﻿
-namespace Agenda.Domain.Entities
+﻿namespace Agenda.Entities.Entities.Base
 {
     public abstract class BaseEntity
     {
@@ -14,7 +13,7 @@ namespace Agenda.Domain.Entities
             Id = Guid.NewGuid();
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             var compareTo = obj as BaseEntity;
 
@@ -42,7 +41,7 @@ namespace Agenda.Domain.Entities
 
         public override int GetHashCode()
         {
-            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
+            return GetType().GetHashCode() * 907 + Id.GetHashCode();
         }
     }
 }

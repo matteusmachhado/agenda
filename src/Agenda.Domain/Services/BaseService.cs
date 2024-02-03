@@ -1,8 +1,8 @@
-﻿using Agenda.Domain.DTOs;
-using Agenda.Domain.Entities;
+﻿using Agenda.Entities.DTOs;
 using Agenda.Domain.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
+using Agenda.Entities.Entities.Base;
 
 namespace Agenda.Domain.Services
 {

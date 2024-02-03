@@ -1,4 +1,4 @@
-﻿using Agenda.Domain.DTOs;
+﻿using Agenda.Entities.DTOs;
 
 namespace Agenda.Domain.Interfaces
 {

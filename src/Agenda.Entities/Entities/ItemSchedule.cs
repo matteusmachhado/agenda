@@ -1,6 +1,6 @@
-﻿using Agenda.Domain.Enums;
+﻿using Agenda.Entities.Enums;
 
-namespace Agenda.Domain.Entities
+namespace Agenda.Entities.Entities
 {
     public class ItemSchedule
     {

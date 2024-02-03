@@ -1,4 +1,4 @@
-﻿namespace Agenda.Domain.Enums
+﻿namespace Agenda.Entities.Enums
 {
     public enum AvailabilityType
     {

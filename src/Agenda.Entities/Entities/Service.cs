@@ -1,6 +1,7 @@
 ﻿using System;
+using Agenda.Entities.Entities.Base;
 
-namespace Agenda.Domain.Entities
+namespace Agenda.Entities.Entities
 {
     public class Service : BaseEntity
     {

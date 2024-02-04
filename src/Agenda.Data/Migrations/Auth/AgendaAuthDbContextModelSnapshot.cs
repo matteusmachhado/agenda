@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Agenda.Data.Migrations
+namespace Agenda.Data.Migrations.Auth
 {
     [DbContext(typeof(AgendaAuthDbContext))]
     partial class AgendaAuthDbContextModelSnapshot : ModelSnapshot
@@ -47,6 +47,15 @@ namespace Agenda.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("tb_roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b60dcb46-cd92-4f96-bf90-fed7c29a041d",
+                            ConcurrencyStamp = "1",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -137,6 +146,24 @@ namespace Agenda.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("tb_users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ea1a0d62-8509-4ada-a30f-b82b86980249",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7bafa273-2c59-4cca-a354-45e3cbb88dd8",
+                            Email = "admin@host.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@HOST.COM",
+                            NormalizedUserName = "ADMIN@HOST.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEYzr10yK3WhDDtAto/1NiM2XmZzBi9G/FReLd0/M87VrcNB2SdZAZd2gwU3mmlYew==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f8fab044-f880-4ea7-8fcd-980d23de349e",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@host.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -167,10 +194,12 @@ namespace Agenda.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -199,6 +228,13 @@ namespace Agenda.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("tb_userroles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "ea1a0d62-8509-4ada-a30f-b82b86980249",
+                            RoleId = "b60dcb46-cd92-4f96-bf90-fed7c29a041d"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -207,10 +243,12 @@ namespace Agenda.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");

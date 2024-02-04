@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Agenda.Data.Migrations
+namespace Agenda.Data.Migrations.Auth
 {
     /// <inheritdoc />
     public partial class Identity : Migration
@@ -96,8 +96,8 @@ namespace Agenda.Data.Migrations
                 name: "tb_userlogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -141,8 +141,8 @@ namespace Agenda.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -155,6 +155,21 @@ namespace Agenda.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "tb_roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "b60dcb46-cd92-4f96-bf90-fed7c29a041d", "1", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "tb_users",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "ea1a0d62-8509-4ada-a30f-b82b86980249", 0, "7bafa273-2c59-4cca-a354-45e3cbb88dd8", "admin@host.com", true, true, null, "ADMIN@HOST.COM", "ADMIN@HOST.COM", "AQAAAAIAAYagAAAAEEYzr10yK3WhDDtAto/1NiM2XmZzBi9G/FReLd0/M87VrcNB2SdZAZd2gwU3mmlYew==", null, false, "f8fab044-f880-4ea7-8fcd-980d23de349e", false, "admin@host.com" });
+
+            migrationBuilder.InsertData(
+                table: "tb_userroles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "b60dcb46-cd92-4f96-bf90-fed7c29a041d", "ea1a0d62-8509-4ada-a30f-b82b86980249" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_tb_roleclaims_RoleId",

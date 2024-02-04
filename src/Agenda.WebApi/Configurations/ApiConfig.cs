@@ -2,6 +2,7 @@
 using Agenda.Data.Interfaces;
 using Agenda.Data.Repositories;
 using Agenda.Data.UoW;
+using Agenda.Entities.Utils;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,11 @@ namespace Agenda.WebApi.Configurations
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
+
+
+            // User Default 
+            var userDefaultConfig = configuration.GetSection("UserDefault");
+            services.Configure<UserDefault>(userDefaultConfig);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();

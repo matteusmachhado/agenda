@@ -5,10 +5,12 @@ namespace Agenda.Domain.Features
 {
     public abstract class BaseCommandHandler
     {
+        private readonly IUnitOfWork _uow;
         protected ValidationResult ValidationResult;
 
-        protected BaseCommandHandler()
+        public BaseCommandHandler(IUnitOfWork uow)
         {
+            _uow = uow;
             ValidationResult = new ValidationResult();
         }
 
@@ -17,9 +19,9 @@ namespace Agenda.Domain.Features
             ValidationResult.Errors.Add(new ValidationFailure(string.Empty, message));
         }
 
-        protected async Task<ValidationResult> PersistData(IUnitOfWork uow)
+        protected async Task<ValidationResult> Commit()
         {
-            if (!await uow.Commit()) AddError("An error occurred while trying to persist data");
+            if (!await _uow.Commit()) AddError("Erro ao persistir os dados.");
 
             return ValidationResult;
         }

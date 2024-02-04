@@ -1,5 +1,9 @@
 ﻿using Agenda.Data.Context;
+using Agenda.Data.Interfaces;
+using Agenda.Data.Repositories;
+using Agenda.Data.UoW;
 using Asp.Versioning;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,6 +55,9 @@ namespace Agenda.WebApi.Configurations
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
 
             return services;
         }

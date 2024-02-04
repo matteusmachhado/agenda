@@ -13,7 +13,7 @@ using System.Text;
 namespace Agenda.WebApi.Controllers.Auth
 {
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}")]
+    [Route("api/v{version:apiVersion}/auth")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -31,7 +31,7 @@ namespace Agenda.WebApi.Controllers.Auth
             _jwtConfig = jwtConfig.Value;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterUserViewModel registerUser)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -58,7 +58,7 @@ namespace Agenda.WebApi.Controllers.Auth
             return CustomResponse(registerUser);
         }
 
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(LoginUserViewModel loginUser)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);

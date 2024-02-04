@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Agenda.Domain.Features.Company.Commands.Create
 {
-    public class CreateCommand : BaseCommand
+    public class CompanyCreateCommand : BaseCommand
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public override bool IsValid()
         {
-            ValidationResult = new CreateCommandValidation().Validate(this);
+            ValidationResult = new CompanyCreateCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

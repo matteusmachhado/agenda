@@ -1,4 +1,4 @@
-﻿using Agenda.Data.Context;
+﻿using Agenda.Data.Contexts;
 using Agenda.Data.Interfaces;
 
 namespace Agenda.Data.UoW

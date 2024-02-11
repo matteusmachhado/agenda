@@ -159,17 +159,17 @@ namespace Agenda.Data.Migrations.Auth
             migrationBuilder.InsertData(
                 table: "tb_roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "b60dcb46-cd92-4f96-bf90-fed7c29a041d", "1", "Admin", "ADMIN" });
+                values: new object[] { "b27c16a6-217b-4102-a652-1850ea9bf26f", "1", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "tb_users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "ea1a0d62-8509-4ada-a30f-b82b86980249", 0, "7bafa273-2c59-4cca-a354-45e3cbb88dd8", "admin@host.com", true, true, null, "ADMIN@HOST.COM", "ADMIN@HOST.COM", "AQAAAAIAAYagAAAAEEYzr10yK3WhDDtAto/1NiM2XmZzBi9G/FReLd0/M87VrcNB2SdZAZd2gwU3mmlYew==", null, false, "f8fab044-f880-4ea7-8fcd-980d23de349e", false, "admin@host.com" });
+                values: new object[] { "6634d1aa-5cbd-46c4-a9b9-a0897a218fbb", 0, "29b1b43f-d90b-4c1a-a2fe-2dcd24ec3b81", "admin@host.com", true, true, null, "ADMIN@HOST.COM", "ADMIN@HOST.COM", "AQAAAAIAAYagAAAAELYwhEZpZ/QTRjPcqsKUpV2X4VCq3KyOgG7rF5if7AFaLcgBCqtpi5bjTn9JY6JkCw==", null, false, "c94b5387-548c-43a1-897e-3ff99be54278", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "tb_userroles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "b60dcb46-cd92-4f96-bf90-fed7c29a041d", "ea1a0d62-8509-4ada-a30f-b82b86980249" });
+                values: new object[] { "b27c16a6-217b-4102-a652-1850ea9bf26f", "6634d1aa-5cbd-46c4-a9b9-a0897a218fbb" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_tb_roleclaims_RoleId",

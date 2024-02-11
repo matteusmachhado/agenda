@@ -10,7 +10,8 @@ namespace Agenda.WebApi.Configurations
         {
             services.AddScoped<INotificationService, NotificationService>();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Identity user
+            services.AddHttpContextAccessor();
             services.AddScoped<IUser, User>();
 
             return services;

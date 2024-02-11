@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Agenda.Data.Context
+namespace Agenda.Data.Contexts
 {
     public class AgendaDbContext : DbContext
     {

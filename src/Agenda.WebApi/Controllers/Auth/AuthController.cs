@@ -14,7 +14,7 @@ namespace Agenda.WebApi.Controllers.Auth
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/auth")]
-    public class AuthController : MainController
+    public class AuthController : BaseController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,7 +24,9 @@ namespace Agenda.WebApi.Controllers.Auth
             INotificationService notificadorService,
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
-            IOptions<JwtConfig> jwtConfig) : base(notificadorService)
+            IUser user,
+            IOptions<JwtConfig> jwtConfig) : base(notificadorService,
+                user)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -87,6 +89,7 @@ namespace Agenda.WebApi.Controllers.Auth
 
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Name, user.UserName));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));

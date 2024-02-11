@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Agenda.Data.Mapping
+namespace Agenda.Data.Mappings
 {
     public class CompanyMapping : IEntityTypeConfiguration<Company>
     {

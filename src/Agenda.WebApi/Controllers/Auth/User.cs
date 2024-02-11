@@ -1,5 +1,7 @@
-﻿using System.Security.Claims;
-using Agenda.WebApi.Extensions;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Agenda.Domain.Interfaces;
+using IdentityModel;
 
 namespace Agenda.WebApi.Controllers.Auth
 {
@@ -12,31 +14,41 @@ namespace Agenda.WebApi.Controllers.Auth
             _accessor = accessor;
         }
 
-        public string Name => _accessor.HttpContext.User.Identity.Name;
-
         public Guid GetUserId()
         {
-            return IsAuthenticated() ? Guid.Parse(_accessor.HttpContext.User.GetUserId()) : Guid.Empty;
+            if (!IsAuthenticated()) return Guid.Empty;
+
+            var claim = _accessor.HttpContext?.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+            return claim is null ? Guid.Empty : Guid.Parse(claim);
         }
 
-        public string GetUserEmail()
+        public string GetUserName()
         {
-            return IsAuthenticated() ? _accessor.HttpContext.User.GetUserEmail() : "";
+            var userName = _accessor.HttpContext?.User.FindFirst(JwtClaimTypes.Name)?.Value;
+            if (!string.IsNullOrEmpty(userName)) return userName;
+
+            return string.Empty;
         }
 
         public bool IsAuthenticated()
         {
-            return _accessor.HttpContext.User.Identity.IsAuthenticated;
+            return _accessor.HttpContext?.User.Identity is { IsAuthenticated: true };
         }
 
         public bool IsInRole(string role)
         {
-            return _accessor.HttpContext.User.IsInRole(role);
+            return _accessor.HttpContext != null && _accessor.HttpContext.User.IsInRole(role);
         }
 
-        public IEnumerable<Claim> GetClaimsIdentity()
+        public string GetLocalIpAddress()
         {
-            return _accessor.HttpContext.User.Claims;
+            return _accessor.HttpContext?.Connection.LocalIpAddress?.ToString();
+        }
+
+        public string GetRemoteIpAddress()
+        {
+            return _accessor.HttpContext?.Connection.RemoteIpAddress?.ToString();
         }
     }
 }

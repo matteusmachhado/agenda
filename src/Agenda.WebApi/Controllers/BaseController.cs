@@ -2,17 +2,28 @@
 using Agenda.Domain.Interfaces;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Agenda.WebApi.Controllers.Auth;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Agenda.WebApi.Controllers
 {
     [ApiController]
-    public abstract class MainController : ControllerBase
+    public abstract class BaseController : ControllerBase
     {
         private readonly INotificationService _notifier;
+        protected Guid UserId { get; set; }
+        protected string UserName { get; set; }
 
-        protected MainController(INotificationService notifier)
+        protected BaseController(INotificationService notifier,
+            IUser user)
         {
             _notifier = notifier;
+
+            if (user.IsAuthenticated())
+            {
+                UserId = user.GetUserId();
+                UserName = user.GetUserName();
+            }
         }
 
         protected bool IsValid()

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace Agenda.Data.Context
+namespace Agenda.Data.Contexts
 {
     public class AgendaAuthDbContext : IdentityDbContext
     {
@@ -42,7 +42,7 @@ namespace Agenda.Data.Context
             var userAdmin = new IdentityUser()
             {
                 Id = Guid.NewGuid().ToString(),
-                UserName = _userDefault.Email,
+                UserName = _userDefault.UserName,
                 NormalizedUserName = _userDefault.Email.ToUpper(),
                 Email = _userDefault.Email,
                 NormalizedEmail = _userDefault.Email.ToUpper(),

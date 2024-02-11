@@ -1,4 +1,4 @@
-﻿using Agenda.Data.Context;
+﻿using Agenda.Data.Contexts;
 using Agenda.WebApi.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;

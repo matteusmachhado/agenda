@@ -1,8 +1,8 @@
-﻿using Agenda.Entities.DTOs;
+﻿using Agenda.Shared.DTOs;
 using Agenda.Domain.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
-using Agenda.Entities.Entities.Base;
+using Agenda.Entities.Base;
 
 namespace Agenda.Domain.Services
 {
@@ -24,7 +24,7 @@ namespace Agenda.Domain.Services
 
         protected void Notificar(string mensagem)
         {
-            _notificador.Handle(new Notification(mensagem));
+            _notificador.Handle(new NotificationDto(mensagem));
         }
 
         protected bool ExecutarValidacao<TValidator, TEntity>(TValidator validacao, TEntity entidade) where TValidator : AbstractValidator<TEntity> where TEntity : BaseEntity

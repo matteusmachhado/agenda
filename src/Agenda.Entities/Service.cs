@@ -1,7 +1,7 @@
 ﻿using System;
-using Agenda.Entities.Entities.Base;
+using Agenda.Entities.Base;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class Service : BaseEntity
     {
@@ -22,7 +22,7 @@ namespace Agenda.Entities.Entities
 
         protected Service() { }
 
-        public void AddProduct(Product product) 
+        public void AddProduct(Product product)
         {
             Products.Add(product);
         }

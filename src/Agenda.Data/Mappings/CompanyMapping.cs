@@ -1,4 +1,4 @@
-﻿using Agenda.Entities.Entities;
+﻿using Agenda.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

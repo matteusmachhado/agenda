@@ -1,6 +1,6 @@
-﻿namespace Agenda.Entities.Enums
+﻿namespace Agenda.Shared.Enums
 {
-    public enum AvailabilityType
+    public enum AvailabilityTypeEnum
     {
         Weekdays = 1,
         WeekdaysAndSaturday = 5,

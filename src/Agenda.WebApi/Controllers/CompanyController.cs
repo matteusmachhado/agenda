@@ -18,8 +18,7 @@ namespace Agenda.WebApi.Controllers
             INotificationService notifier,
             IMediator mediator, 
             IUser user
-            ) : base(notifier,
-                user)
+            ) : base(notifier, user)
         {
             _mediator = mediator;
         }

@@ -1,4 +1,4 @@
-﻿using Agenda.Entities.Entities;
+﻿using Agenda.Entities;
 
 namespace Agenda.Data.Interfaces
 {

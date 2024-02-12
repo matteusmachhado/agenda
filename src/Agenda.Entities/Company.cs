@@ -1,7 +1,7 @@
 ﻿using System;
-using Agenda.Entities.Entities.Base;
+using Agenda.Entities.Base;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class Company : BaseEntity
     {
@@ -11,14 +11,14 @@ namespace Agenda.Entities.Entities
 
         public Company() { }
 
-        public Company(string name, string description) 
+        public Company(string name, string description)
         {
             Name = name;
             Description = description;
             //Services = new List<Service>();
         }
 
-        
+
 
         //public void AddService(Service service) 
         //{

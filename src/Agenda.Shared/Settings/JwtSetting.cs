@@ -1,6 +1,12 @@
-﻿namespace Agenda.WebApi.Configurations
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Agenda.Shared.Settings
 {
-    public class JwtConfig
+    public class JwtSetting
     {
         public string Secret { get; set; }
         public int ExpiracaoHoras { get; set; }

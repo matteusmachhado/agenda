@@ -5,6 +5,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
+    <UserSecretsId>ee161697-bea4-4685-b545-71d900479b5e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <ProjectReference Include="..\Agenda.Data\Agenda.Data.csproj" />
     <ProjectReference Include="..\Agenda.Domain\Agenda.Domain.csproj" />
     <ProjectReference Include="..\Agenda.Entities\Agenda.Entities.csproj" />
+    <ProjectReference Include="..\Agenda.Shared\Agenda.Shared.csproj" />
   </ItemGroup>
 
 </Project>

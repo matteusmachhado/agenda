@@ -1,9 +1,7 @@
-﻿using Agenda.Entities.DTOs;
-using Agenda.Domain.Interfaces;
+﻿using Agenda.Domain.Interfaces;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using Agenda.WebApi.Controllers.Auth;
-using Microsoft.AspNetCore.Authorization;
+using Agenda.Shared.DTOs;
 
 namespace Agenda.WebApi.Controllers
 {
@@ -48,7 +46,7 @@ namespace Agenda.WebApi.Controllers
         {
             foreach (var error in validationResult.Errors)
             {
-                _notifier.Handle(new Notification(error.ErrorMessage));
+                _notifier.Handle(new NotificationDto(error.ErrorMessage));
             }
 
             return CustomResponse();
@@ -56,7 +54,7 @@ namespace Agenda.WebApi.Controllers
 
         protected void NotificationError(string mensagem)
         {
-            _notifier.Handle(new Notification(mensagem));
+            _notifier.Handle(new NotificationDto(mensagem));
         }
     }
 }

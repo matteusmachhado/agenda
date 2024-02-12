@@ -1,6 +1,6 @@
 ﻿using Agenda.Data.Contexts;
 using Agenda.Data.Interfaces;
-using Agenda.Entities.Entities;
+using Agenda.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

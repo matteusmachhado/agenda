@@ -1,4 +1,5 @@
 ﻿using Agenda.Data.Contexts;
+using Agenda.Shared.Settings;
 using Agenda.WebApi.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -21,12 +22,12 @@ namespace Agenda.WebApi.Configurations
                .AddErrorDescriber<IdentityMensagensPortugues>()
                .AddDefaultTokenProviders();
 
-            // Jwt configs 
-            var jwtConfigSection = configuration.GetSection("Jwt");
-            services.Configure<JwtConfig>(jwtConfigSection);
+            // JWT 
+            var jwtSettingSection = configuration.GetSection("Jwt");
+            services.Configure<JwtSetting>(jwtSettingSection);
 
-            var jwtConfig = jwtConfigSection.Get<JwtConfig>();
-            var key = Encoding.ASCII.GetBytes(jwtConfig.Secret);
+            var jwtSetting = jwtSettingSection.Get<JwtSetting>();
+            var key = Encoding.ASCII.GetBytes(jwtSetting.Secret);
 
             services.AddAuthentication(x =>
             {
@@ -42,8 +43,8 @@ namespace Agenda.WebApi.Configurations
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = jwtConfig.ValidoEm,
-                    ValidIssuer = jwtConfig.Emissor
+                    ValidAudience = jwtSetting.ValidoEm,
+                    ValidIssuer = jwtSetting.Emissor
                 };
             });
 

@@ -1,11 +1,11 @@
-﻿using Agenda.Entities.Enums;
+﻿using Agenda.Shared.Enums;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class ItemSchedule
     {
         public Guid ScheduleId { get; private set; }
         public DateTime Date { get; set; }
-        public StatusSchedule Status { get; private set; }
+        public StatusScheduleEnum Status { get; private set; }
     }
 }

@@ -1,7 +1,6 @@
-﻿
-using Agenda.Entities.Entities.Base;
+﻿using Agenda.Entities.Base;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class Employee : BaseEntity
     {
@@ -14,11 +13,11 @@ namespace Agenda.Entities.Entities
 
         public Employee(string name, TimeOnly startWork, TimeOnly stopWork, TimeOnly restartWork, TimeOnly endWork)
         {
-            Name = name;    
+            Name = name;
             StartWork = startWork;
             StopWork = stopWork;
             RestartWork = restartWork;
-            EndWork = endWork;  
+            EndWork = endWork;
         }
 
         protected Employee() { }

@@ -1,7 +1,7 @@
-﻿using Agenda.Entities.Entities.Base;
-using Agenda.Entities.Enums;
+﻿using Agenda.Entities.Base;
+using Agenda.Shared.Enums;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class Schedule : BaseEntity
     {
@@ -9,7 +9,7 @@ namespace Agenda.Entities.Entities
         public Guid ServiceId { get; private set; }
         public Employee Employee { get; private set; }
         public Guid EmployeeId { get; private set; }
-        public AvailabilityType AvailabilityType { get; private set; } = AvailabilityType.WeekdaysAndSaturday;
+        public AvailabilityTypeEnum AvailabilityType { get; private set; } = AvailabilityTypeEnum.WeekdaysAndSaturday;
         public ICollection<ItemSchedule> Schedules { get; private set; }
 
         public Schedule(Service service, Employee employee)
@@ -30,9 +30,9 @@ namespace Agenda.Entities.Entities
 
             var totalAvailabilityByDay = totalAvailability / Service.Duration.Minute;
 
-            foreach (var index in Enumerable.Range(1, totalAvailabilityByDay)) 
+            foreach (var index in Enumerable.Range(1, totalAvailabilityByDay))
             {
-                
+
             }
 
             return items;

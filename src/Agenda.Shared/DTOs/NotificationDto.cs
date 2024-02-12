@@ -1,11 +1,11 @@
 ﻿
-namespace Agenda.Entities.DTOs
+namespace Agenda.Shared.DTOs
 {
-    public class Notification
+    public class NotificationDto
     {
         public string Mensagem { get; }
 
-        public Notification(string mensagem)
+        public NotificationDto(string mensagem)
         {
             Mensagem = mensagem;
         }

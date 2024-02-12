@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Agenda.Entities.Entities.Base;
+using Agenda.Entities.Base;
 
-namespace Agenda.Entities.Entities
+namespace Agenda.Entities
 {
     public class Product : BaseEntity
     {

@@ -1,5 +1,6 @@
 ﻿using Agenda.Domain.Interfaces;
-using Agenda.Entities.ViewModels.Auth;
+using Agenda.Shared.Settings;
+using Agenda.Shared.ViewModels.Auth;
 using Agenda.WebApi.Configurations;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Identity;
@@ -18,19 +19,19 @@ namespace Agenda.WebApi.Controllers.Auth
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly JwtConfig _jwtConfig;
+        private readonly JwtSetting _jwtSetting;
 
         public AuthController(
             INotificationService notificadorService,
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IUser user,
-            IOptions<JwtConfig> jwtConfig) : base(notificadorService,
+            IOptions<JwtSetting> jwtSetting) : base(notificadorService,
                 user)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _jwtConfig = jwtConfig.Value;
+            _jwtSetting = jwtSetting.Value;
         }
 
         [HttpPost("register")]
@@ -102,13 +103,13 @@ namespace Agenda.WebApi.Controllers.Auth
             identityClaims.AddClaims(claims);
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSetting.Secret);
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = _jwtConfig.Emissor,
-                Audience = _jwtConfig.ValidoEm,
+                Issuer = _jwtSetting.Emissor,
+                Audience = _jwtSetting.ValidoEm,
                 Subject = identityClaims,
-                Expires = DateTime.UtcNow.AddHours(_jwtConfig.ExpiracaoHoras),
+                Expires = DateTime.UtcNow.AddHours(_jwtSetting.ExpiracaoHoras),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             });
 
@@ -117,7 +118,7 @@ namespace Agenda.WebApi.Controllers.Auth
             var response = new LoginResponseViewModel
             {
                 AccessToken = encodedToken,
-                ExpiresIn = TimeSpan.FromHours(_jwtConfig.ExpiracaoHoras).TotalSeconds
+                ExpiresIn = TimeSpan.FromHours(_jwtSetting.ExpiracaoHoras).TotalSeconds
             };
 
             return response;

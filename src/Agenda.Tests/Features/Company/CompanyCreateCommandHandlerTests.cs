@@ -28,7 +28,7 @@ namespace Agenda.Tests.Features.Company
 
             // Assert
             result.Errors.Should().HaveCount(0);
-            _companyTestsFixture.AutoMocker.GetMock<ICompanyRepository>().Verify(r => r.Add(It.IsAny<Entities.Entities.Company>()), Times.Once);
+            _companyTestsFixture.AutoMocker.GetMock<ICompanyRepository>().Verify(r => r.Add(It.IsAny<Entities.Company>()), Times.Once);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Agenda.Entities.Entities.Base
+﻿namespace Agenda.Entities.Base
 {
     public abstract class BaseEntity
     {

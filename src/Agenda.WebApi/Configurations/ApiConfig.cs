@@ -2,9 +2,8 @@
 using Agenda.Data.Interfaces;
 using Agenda.Data.Repositories;
 using Agenda.Data.UoW;
-using Agenda.Entities.Utils;
+using Agenda.Shared.Settings;
 using Asp.Versioning;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,8 +58,12 @@ namespace Agenda.WebApi.Configurations
 
 
             // User Default 
-            var userDefaultConfig = configuration.GetSection("UserDefault");
-            services.Configure<UserDefault>(userDefaultConfig);
+            var userDefaultSetting = configuration.GetSection("UserDefault");
+            services.Configure<UserDefaultSetting>(userDefaultSetting);
+
+            // Twilio
+            var twilioSetting = configuration.GetSection("Twilio");
+            services.Configure<TwilioSetting>(twilioSetting);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();

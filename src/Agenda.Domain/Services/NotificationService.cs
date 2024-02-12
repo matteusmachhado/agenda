@@ -1,23 +1,23 @@
-﻿using Agenda.Entities.DTOs;
+﻿using Agenda.Shared.DTOs;
 using Agenda.Domain.Interfaces;
 
 namespace Agenda.Domain.Services
 {
     public class NotificationService : INotificationService
     {
-        private List<Notification> _notificacoes;
+        private List<NotificationDto> _notificacoes;
 
         public NotificationService()
         {
-            _notificacoes = new List<Notification>();
+            _notificacoes = new List<NotificationDto>();
         }
 
-        public void Handle(Notification notificacao)
+        public void Handle(NotificationDto notificacao)
         {
             _notificacoes.Add(notificacao);
         }
 
-        public List<Notification> Notifications()
+        public List<NotificationDto> Notifications()
         {
             return _notificacoes;
         }

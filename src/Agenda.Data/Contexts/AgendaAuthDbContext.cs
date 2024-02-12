@@ -1,4 +1,4 @@
-﻿using Agenda.Entities.Utils;
+﻿using Agenda.Shared.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +8,10 @@ namespace Agenda.Data.Contexts
 {
     public class AgendaAuthDbContext : IdentityDbContext
     {
-        private readonly UserDefault _userDefault;
+        private readonly UserDefaultSetting _userDefault;
 
         public AgendaAuthDbContext(DbContextOptions<AgendaAuthDbContext> options,
-            IOptions<UserDefault> userDefault
+            IOptions<UserDefaultSetting> userDefault
             ) : base(options) 
         {
             _userDefault = userDefault.Value;

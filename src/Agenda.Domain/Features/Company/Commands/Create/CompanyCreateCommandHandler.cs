@@ -21,7 +21,9 @@ namespace Agenda.Domain.Features.Company.Commands.Create
 
             _companyRepository.Add(company);
 
-            return await Commit();
+            await Commit();
+
+            return request.ValidationResult;
         }
     }
 }

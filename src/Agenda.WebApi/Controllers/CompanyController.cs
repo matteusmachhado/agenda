@@ -1,11 +1,8 @@
 ﻿using Agenda.Domain.Features.Company.Commands.Create;
 using Agenda.Domain.Interfaces;
-using Agenda.Entities.ViewModels;
-using Agenda.Entities.ViewModels.Auth;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.WebApi.Controllers

@@ -14,13 +14,13 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
 
         }
 
-        public async Task<ClientCreateVerificationCodeResponse> Handle(ClientCreateVerificationCodeCommand request, CancellationToken cancellationToken)
+        public Task<ClientCreateVerificationCodeResponse> Handle(ClientCreateVerificationCodeCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return new ClientCreateVerificationCodeResponse(request.ValidationResult);
+            if (!request.IsValid()) return Task.FromResult(new ClientCreateVerificationCodeResponse(request.ValidationResult));
 
             var code = GenerateCode(request.TypeCodeVerify);
 
-            return new ClientCreateVerificationCodeResponse(code);
+            return Task.FromResult(new ClientCreateVerificationCodeResponse(code));
         }
 
         public string GenerateCode(TypeCodeVerifyEnum type) => type switch

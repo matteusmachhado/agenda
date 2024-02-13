@@ -11,12 +11,14 @@ namespace Agenda.Domain.Features.Client.Commands.CreateVerificationCode
 
         public ClientCreateVerificationCodeResponse(ValidationResult validationResult)
         {
+            Code = string.Empty;
             ValidationResult = validationResult;
         }
 
         public ClientCreateVerificationCodeResponse(string code)
         {
             Code = code;
+            ValidationResult = new ValidationResult();
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Agenda.Data.Contexts
     {
         public AgendaDbContext(DbContextOptions<AgendaDbContext> dbContextOptions): base(dbContextOptions) { }
 
-        public DbSet<Company> Company { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -17,7 +17,7 @@ namespace Agenda.Domain.Features.Company.Commands.Create
         {
             if (!request.IsValid()) return request.ValidationResult;
 
-            var company = new Agenda.Entities.Company(request.Name, request.Description);
+            var company = new Entities.Company(request.Name, request.Description);
 
             _companyRepository.Add(company);
 

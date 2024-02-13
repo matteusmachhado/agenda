@@ -35,7 +35,6 @@ namespace Agenda.WebApi.Configurations
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
-
             });
 
             services.AddCors(options =>
@@ -55,18 +54,6 @@ namespace Agenda.WebApi.Configurations
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
-
-
-            // User Default 
-            var userDefaultSetting = configuration.GetSection("UserDefault");
-            services.Configure<UserDefaultSetting>(userDefaultSetting);
-
-            // Twilio
-            var twilioSetting = configuration.GetSection("Twilio");
-            services.Configure<TwilioSetting>(twilioSetting);
-
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ICompanyRepository, CompanyRepository>();
 
             return services;
         }

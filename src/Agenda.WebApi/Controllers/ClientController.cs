@@ -24,7 +24,7 @@ namespace Agenda.WebApi.Controllers
 
         [AllowAnonymous]
         [HttpPost("send-sms")]
-        public async Task<ActionResult> Send(ClientSendSMSComand SendSMSComand)
+        public async Task<ActionResult> Send(ClientVerificationComand SendSMSComand)
         {
             var result = await _mediator.Send(SendSMSComand);
 

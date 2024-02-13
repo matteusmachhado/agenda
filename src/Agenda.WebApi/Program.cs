@@ -17,7 +17,7 @@ namespace Agenda.WebApi
 
             builder.Services.RegisterMediatR();
 
-            builder.Services.ResolveDependencies();
+            builder.Services.ResolveDependencies(builder.Configuration);
 
             var app = builder.Build();
 

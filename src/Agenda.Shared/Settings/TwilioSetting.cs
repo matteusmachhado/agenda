@@ -1,4 +1,4 @@
-﻿namespace Agenda.WebApi.Configurations
+﻿namespace Agenda.Shared.Settings
 {
     public class TwilioSetting
     {

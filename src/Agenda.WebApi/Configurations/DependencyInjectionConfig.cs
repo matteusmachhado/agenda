@@ -14,6 +14,7 @@ namespace Agenda.WebApi.Configurations
         {
             // Services
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<ITwilioService, TwilioService>();
 
             // User Default 
             var userDefaultSetting = configuration.GetSection("UserDefault");

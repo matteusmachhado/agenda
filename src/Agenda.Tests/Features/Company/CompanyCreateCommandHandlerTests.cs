@@ -2,7 +2,6 @@
 using Agenda.Domain.Features.Company.Commands.Create;
 using FluentAssertions;
 using Moq;
-using Moq.AutoMock;
 
 namespace Agenda.Tests.Features.Company
 {

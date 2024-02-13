@@ -1,15 +1,14 @@
-﻿using Agenda.WebApi.Configurations;
-using FluentValidation;
+﻿using FluentValidation;
 using PhoneNumbers;
 
-namespace Agenda.Domain.Features.Client.Commands.SendSMS
+namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
 {
-    public class ClientVerificationComandValidation : AbstractValidator<ClientVerificationComand>
+    public class ClientSendVerificationCodeCommandValidation : AbstractValidator<ClientSendVerificationCodeCommand>
     {
-        public ClientVerificationComandValidation()
+        public ClientSendVerificationCodeCommandValidation()
         {
             RuleFor(c => c.PhoneNumber)
-                .NotEmpty()
+                .NotNull()
                 .NotEmpty()
                 .Must(ValidPhoneNumber)
                 .WithMessage("'{PropertyValue}' inválido.");

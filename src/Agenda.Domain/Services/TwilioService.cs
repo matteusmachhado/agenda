@@ -15,7 +15,7 @@ namespace Agenda.Domain.Services
             _twilioSetting = twilioSetting.Value;
         }
 
-        public async Task Verification(string code, string phoneNumber)
+        public async Task SendVerificationCode(string code, string phoneNumber)
         {
             TwilioClient.Init(_twilioSetting.AccountSID, _twilioSetting.AuthToken);
 

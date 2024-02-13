@@ -8,7 +8,7 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
 {
     public class ClientCreateVerificationCodeCommand : IRequest<ClientCreateVerificationCodeResponse>
     {
-        public TypeCodeVerifyEnum TypeCodeVerify { get; set; }
+        public TypeVerificarionCodeEnum TypeVerificarionCode { get; set; }
 
         [JsonIgnore]
         public ValidationResult ValidationResult { get; set; }

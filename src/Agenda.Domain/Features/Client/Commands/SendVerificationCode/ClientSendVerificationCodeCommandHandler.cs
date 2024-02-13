@@ -1,5 +1,4 @@
 ﻿using Agenda.Data.Interfaces;
-using Agenda.Domain.Features.Client.Commands.CreateVerificationCode;
 using Agenda.Domain.Interfaces;
 using Agenda.Shared.Enums;
 using FluentValidation.Results;
@@ -25,11 +24,11 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
         {
             if (!request.IsValid()) return request.ValidationResult;
 
-            var command = new ClientCreateVerificationCodeCommand() { TypeCodeVerify = TypeCodeVerifyEnum.Numeric };
+            var command = new ClientCreateVerificationCodeCommand() { TypeVerificarionCode = TypeVerificarionCodeEnum.Numeric };
             var result = await _mediator.Send(command);
             var code = result.Code;
 
-            await _twilioService.Verification(code, request.PhoneNumber);
+            await _twilioService.SendVerificationCode(code, request.PhoneNumber);
 
             return request.ValidationResult;
         }

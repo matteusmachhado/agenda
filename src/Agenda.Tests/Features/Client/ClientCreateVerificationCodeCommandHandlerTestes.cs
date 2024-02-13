@@ -1,6 +1,7 @@
 ﻿using Agenda.Domain.Features.Client.Commands.SendVerificationCode;
 using Agenda.Shared.Enums;
 using FluentAssertions;
+using Moq.AutoMock;
 
 namespace Agenda.Tests.Features.Client
 {
@@ -19,8 +20,9 @@ namespace Agenda.Tests.Features.Client
         public async void Client_CreateVerificationCodeNumeric_Sucesso()
         {
             // Arrange
-            var command = new ClientCreateVerificationCodeCommand() { TypeCodeVerify = TypeCodeVerifyEnum.Numeric };
-            var clientCreateVerificationCodeCommandaHandler = _clientTestsFixture.AutoMocker.CreateInstance<ClientCreateVerificationCodeCommandHandler>();
+            var autoMocker = new AutoMocker();
+            var command = new ClientCreateVerificationCodeCommand() { TypeVerificarionCode = TypeVerificarionCodeEnum.Numeric };
+            var clientCreateVerificationCodeCommandaHandler = autoMocker.CreateInstance<ClientCreateVerificationCodeCommandHandler>();
 
             // Act
             var result = await clientCreateVerificationCodeCommandaHandler.Handle(command, CancellationToken.None);
@@ -34,8 +36,9 @@ namespace Agenda.Tests.Features.Client
         public async void Client_CreateVerificationCodeAlphaNumeric_Sucesso()
         {
             // Arrange
-            var command = new ClientCreateVerificationCodeCommand() { TypeCodeVerify = TypeCodeVerifyEnum.AlphaNumeric };
-            var clientCreateVerificationCodeCommandaHandler = _clientTestsFixture.AutoMocker.CreateInstance<ClientCreateVerificationCodeCommandHandler>();
+            var autoMocker = new AutoMocker();
+            var command = new ClientCreateVerificationCodeCommand() { TypeVerificarionCode = TypeVerificarionCodeEnum.AlphaNumeric };
+            var clientCreateVerificationCodeCommandaHandler = autoMocker.CreateInstance<ClientCreateVerificationCodeCommandHandler>();
 
             // Act
             var result = await clientCreateVerificationCodeCommandaHandler.Handle(command, CancellationToken.None);

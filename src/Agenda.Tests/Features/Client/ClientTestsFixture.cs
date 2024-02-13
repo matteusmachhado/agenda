@@ -7,11 +7,10 @@ namespace Agenda.Tests.Features.Client
 
     public class ClientTestsFixture : IDisposable
     {
-        public readonly AutoMocker AutoMocker;
 
         public ClientTestsFixture()
         {
-            AutoMocker = new AutoMocker();
+
         }
 
         public void Dispose()

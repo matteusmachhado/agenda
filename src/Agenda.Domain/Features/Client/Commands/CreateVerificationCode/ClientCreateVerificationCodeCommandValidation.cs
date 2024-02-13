@@ -6,7 +6,7 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
     {
         public ClientCreateVerificationCodeCommandValidation()
         {
-            RuleFor(c => c.TypeCodeVerify)
+            RuleFor(c => c.TypeVerificarionCode)
                 .NotNull();
         }
     }

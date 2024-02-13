@@ -1,7 +1,7 @@
 ﻿
 namespace Agenda.Shared.Enums
 {
-    public enum TypeCodeVerifyEnum
+    public enum TypeVerificarionCodeEnum
     {
         Numeric = 0,
         AlphaNumeric = 1

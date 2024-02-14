@@ -1,4 +1,6 @@
-﻿using Agenda.Domain.Features.Client.Commands.SendVerificationCode;
+﻿using Agenda.Domain.Features.Client.Commands.SendVerificationCodeEmail;
+using Agenda.Domain.Features.Client.Commands.SendVerificationCodeSMS;
+using Agenda.Domain.Features.Client.Commands.VerifyCode;
 using Agenda.Domain.Interfaces;
 using Asp.Versioning;
 using MediatR;
@@ -22,10 +24,28 @@ namespace Agenda.WebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("verification")]
-        public async Task<ActionResult> Send(ClientSendVerificationCodeCommand clientSendVerificationCodeCommand)
+        [HttpPost("send-verification-code-sms")]
+        public async Task<ActionResult> SendVerificationCodeSMS(ClientSendVerificationCodeSMSCommand clientSendVerificationCodeCommand)
         {
             var result = await _mediator.Send(clientSendVerificationCodeCommand);
+
+            return CustomResponse(result);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("send-verification-code-email")]
+        public async Task<ActionResult> SendVerificationCodeEmail(ClientSendVerificationCodeEmailCommand clientSendVerificationCodeEmailCommand)
+        {
+            var result = await _mediator.Send(clientSendVerificationCodeEmailCommand);
+
+            return CustomResponse(result);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("verify")]
+        public async Task<ActionResult> Verify(ClientVerifyCodeCommand clientVerifyCodeCommand)
+        {
+            var result = await _mediator.Send(clientVerifyCodeCommand);
 
             return CustomResponse(result);
         }

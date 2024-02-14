@@ -27,6 +27,11 @@ namespace Agenda.Data.Repositories
             return await DbSet.ToListAsync();
         }
 
+        public IQueryable<TEntity> AsQueryable()
+        {
+            return DbSet.AsQueryable();
+        }
+
         public async Task<IEnumerable<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate)
         {
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();

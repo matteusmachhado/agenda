@@ -1,4 +1,5 @@
-﻿using Agenda.Domain.Interfaces;
+﻿using Agenda.Data.Interfaces;
+using Agenda.Domain.Interfaces;
 using Agenda.Shared.Settings;
 using Microsoft.Extensions.Options;
 using Twilio;
@@ -6,11 +7,13 @@ using Twilio.Rest.Api.V2010.Account;
 
 namespace Agenda.Domain.Services
 {
-    public class TwilioService : ITwilioService
+    public class TwilioService : BaseService, ITwilioService
     {
         private readonly TwilioSetting _twilioSetting;
 
-        public TwilioService(IOptions<TwilioSetting> twilioSetting)
+        public TwilioService(INotificationService notificador,
+            IUnitOfWork unitOfWork, 
+            IOptions<TwilioSetting> twilioSetting) : base (notificador, unitOfWork)
         {
             _twilioSetting = twilioSetting.Value;
         }

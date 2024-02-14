@@ -8,6 +8,7 @@ namespace Agenda.Data.Interfaces
         Task<IEnumerable<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> GetById(Guid id);
         Task<List<TEntity>> All();
+        IQueryable<TEntity> AsQueryable();
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Remove(Guid id);   

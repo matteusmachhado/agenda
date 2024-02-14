@@ -10,6 +10,7 @@ namespace Agenda.Data.Contexts
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<VerificationCode> VerificationCodes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,20 +1,19 @@
-﻿using Agenda.Domain.Features.Client.Commands.CreateVerificationCode;
-using Agenda.Domain.Features.Client.Commands.SendVerificationCode;
+﻿using Agenda.Domain.Features.Client.Commands.SendVerificationCodeSMS;
 using Agenda.Domain.Interfaces;
+using Agenda.Shared.Enums;
 using Agenda.Shared.Utils;
 using FluentAssertions;
-using MediatR;
 using Moq;
 using Moq.AutoMock;
 
 namespace Agenda.Tests.Features.Client
 {
     [Collection(nameof(CollectionClient))]
-    public class ClientSendVerificationCodeCommandHandlerTests
+    public class ClientSendVerificationCodeSMSCommandHandlerTests
     {
         private readonly ClientTestsFixture _clientTestsFixture;
 
-        public ClientSendVerificationCodeCommandHandlerTests(ClientTestsFixture clientTestsFixture)
+        public ClientSendVerificationCodeSMSCommandHandlerTests(ClientTestsFixture clientTestsFixture)
         {
             _clientTestsFixture = clientTestsFixture;
         }
@@ -29,14 +28,15 @@ namespace Agenda.Tests.Features.Client
         public async void Client_SendVerificationCodeNumeric_Sucesso(string phoneNumber)
         {
             // Arrange
-            var command = new ClientSendVerificationCodeCommand() { PhoneNumber = phoneNumber };
+            var command = new ClientSendVerificationCodeSMSCommand() { PhoneNumber = phoneNumber };
             var autoMocker = new AutoMocker();
-            var clientSendVerificationCodeCommandHandler = autoMocker.CreateInstance<ClientSendVerificationCodeCommandHandler>();
-            autoMocker.GetMock<IMediator>().Setup(c => c.Send(It.IsAny<ClientCreateVerificationCodeCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new ClientCreateVerificationCodeResponse(RandomUtil.Numeric(5)));
+            var clientSendVerificationCodeSMSCommandHandler = autoMocker.CreateInstance<ClientSendVerificationCodeSMSCommandHandler>();
+            autoMocker.GetMock<IVerificationCodeService>()
+                .Setup(v => v.CreateVerificationCodeSMS(It.IsAny<string>(), It.IsAny<TypeOfVerificarionCodeEnum>()))
+                .ReturnsAsync(RandomUtil.Numeric(5));
 
             // Act
-            var result = await clientSendVerificationCodeCommandHandler.Handle(command, CancellationToken.None);
+            var result = await clientSendVerificationCodeSMSCommandHandler.Handle(command, CancellationToken.None);
 
             // Assert
             result.Errors.Should().HaveCount(0);

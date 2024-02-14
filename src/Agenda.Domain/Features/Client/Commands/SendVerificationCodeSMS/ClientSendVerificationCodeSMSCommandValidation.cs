@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using PhoneNumbers;
 
-namespace Agenda.Domain.Features.Client.Commands.SendVerificationCode
+namespace Agenda.Domain.Features.Client.Commands.SendVerificationCodeSMS
 {
-    public class ClientSendVerificationCodeCommandValidation : AbstractValidator<ClientSendVerificationCodeCommand>
+    public class ClientSendVerificationCodeSMSCommandValidation : AbstractValidator<ClientSendVerificationCodeSMSCommand>
     {
-        public ClientSendVerificationCodeCommandValidation()
+        public ClientSendVerificationCodeSMSCommandValidation()
         {
             RuleFor(c => c.PhoneNumber)
                 .NotNull()

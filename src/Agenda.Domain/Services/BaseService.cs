@@ -3,14 +3,20 @@ using Agenda.Domain.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
 using Agenda.Entities.Base;
+using Agenda.Data.Interfaces;
 
 namespace Agenda.Domain.Services
 {
     public abstract class BaseService
     {
+        private readonly IUnitOfWork _uow;
+
         private readonly INotificationService _notificador;
-        protected BaseService(INotificationService notificador)
+
+        protected BaseService(INotificationService notificador,
+            IUnitOfWork uow)
         {
+            _uow = uow;
             _notificador = notificador;
         }
 
@@ -36,6 +42,11 @@ namespace Agenda.Domain.Services
             Notificar(validator);
 
             return false;
+        }
+
+        protected async Task Commit()
+        {
+            await _uow.Commit();
         }
     }
 }

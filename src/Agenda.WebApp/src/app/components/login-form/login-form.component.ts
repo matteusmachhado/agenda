@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { AutenticationService } from '../../services/autentication.service';
 
 @Component({
   selector: 'login-form',
@@ -25,14 +26,21 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 })
 export class LoginFormComponent {
 
-  private formBuilderService = inject(NonNullableFormBuilder);
+  private formBuilderService = inject(FormBuilder);
+  private autenticationService = inject(AutenticationService);
 
   formLogin = this.formBuilderService.group({
-    phoneNumber: ['', Validators.required]
-  })
+    phoneNumber: this.formBuilderService.nonNullable.control('', {
+      validators: [Validators.required]
+    })
+  });
 
   login(){
-    console.log(this.formLogin.value);
+    const phoneNumber = this.formLogin.value.phoneNumber;
+    if(!phoneNumber) return;
+    this.autenticationService.sendCode(phoneNumber).subscribe((res) => {
+      console.log(res);
+    });
   }
 
 }

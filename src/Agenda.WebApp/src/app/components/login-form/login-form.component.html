@@ -1,11 +1,10 @@
 <form [formGroup]="formLogin" (submit)="login()">
 
-    <mat-form-field class="example-full-width">
-        <mat-label>Telephone</mat-label>
+    <mat-form-field class="full-width">
         <span matTextPrefix>+55 &nbsp;</span>
         <input type="tel" mask="(00) 0000-0000||(00) 0 0000-0000" formControlName="phoneNumber" matInput placeholder="(00) 0 0000-0000">
-        <mat-icon matSuffix>mode_edit</mat-icon>
+        <mat-icon matSuffix>phone_iphone</mat-icon>
     </mat-form-field>
 
-    <button type="submit" [disabled]="!formLogin.valid" mat-raised-button color="primary">Primary</button>
+    <button type="submit" [disabled]="!formLogin.valid" mat-raised-button color="primary">Enviar código</button>
 </form>

@@ -1,0 +1,25 @@
+.container-login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login {
+    width: 500px;
+    background-color: #fff;
+    text-align: center;
+    padding: 50px;   
+}
+
+.form-login h2{
+    text-transform: uppercase;
+    font-size:  26px;
+    width: 100%;
+}
+
+.form-login p{
+    color:#999;
+    font-size: 16px;
+    line-height: 24px;
+}

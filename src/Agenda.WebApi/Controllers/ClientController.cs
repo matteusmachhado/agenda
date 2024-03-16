@@ -2,6 +2,7 @@
 using Agenda.Domain.Features.Client.Commands.SendVerificationCodeSMS;
 using Agenda.Domain.Features.Client.Commands.VerifyCode;
 using Agenda.Domain.Interfaces;
+using Agenda.WebApi.Middlewares;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -24,6 +25,7 @@ namespace Agenda.WebApi.Controllers
         }
 
         [AllowAnonymous]
+        [Transaction]
         [HttpPost("send-verification-code-sms")]
         public async Task<ActionResult> SendVerificationCodeSMS(ClientSendVerificationCodeSMSCommand clientSendVerificationCodeCommand)
         {
@@ -33,6 +35,7 @@ namespace Agenda.WebApi.Controllers
         }
 
         [AllowAnonymous]
+        [Transaction]
         [HttpPost("send-verification-code-email")]
         public async Task<ActionResult> SendVerificationCodeEmail(ClientSendVerificationCodeEmailCommand clientSendVerificationCodeEmailCommand)
         {
@@ -42,6 +45,7 @@ namespace Agenda.WebApi.Controllers
         }
 
         [AllowAnonymous]
+        [Transaction]
         [HttpPost("verify")]
         public async Task<ActionResult> Verify(ClientVerifyCodeCommand clientVerifyCodeCommand)
         {

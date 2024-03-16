@@ -1,8 +1,5 @@
 ﻿using Agenda.Data.Contexts;
-using Agenda.Data.Interfaces;
-using Agenda.Data.Repositories;
-using Agenda.Data.UoW;
-using Agenda.Shared.Settings;
+using Agenda.WebApi.Middlewares;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -80,6 +77,8 @@ namespace Agenda.WebApi.Configurations
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseDbTransaction();
 
             app.UseStaticFiles();
 

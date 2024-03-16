@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { AutenticationService } from '../../services/autentication.service';
 
@@ -28,6 +29,7 @@ export class LoginFormComponent {
 
   private formBuilderService = inject(FormBuilder);
   private autenticationService = inject(AutenticationService);
+  private router = inject(Router);
 
   formLogin = this.formBuilderService.group({
     phoneNumber: this.formBuilderService.nonNullable.control('', {
@@ -38,9 +40,7 @@ export class LoginFormComponent {
   login(){
     const phoneNumber = this.formLogin.value.phoneNumber;
     if(!phoneNumber) return;
-    this.autenticationService.sendCode(phoneNumber).subscribe((res) => {
-      console.log(res);
-    });
+    this.autenticationService.sendCode(phoneNumber).subscribe(res => this.router.navigate(['/verify']));
   }
 
 }

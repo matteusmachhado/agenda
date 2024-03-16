@@ -1,0 +1,26 @@
+<form [formGroup]="formVerify" (submit)="verify()">
+
+    <mat-form-field class="form-field-verify">
+        <input type="text" formControlName="first" #first (keyup)="onKeyFirst()" maxlength="1" matInput placeholder="0">
+    </mat-form-field>
+
+    <mat-form-field class="form-field-verify">
+        <input type="text" formControlName="second" #second (keyup)="onKeySecond()" maxlength="1" matInput placeholder="0">
+    </mat-form-field>
+
+    <mat-form-field class="form-field-verify">
+        <input type="text" formControlName="three" #three (keyup)="onKeyThree()" maxlength="1" matInput placeholder="0">
+    </mat-form-field>
+
+    <mat-form-field class="form-field-verify">
+        <input type="text" formControlName="four" #four (keyup)="onKeyFour()" maxlength="1" matInput placeholder="0">
+    </mat-form-field>
+
+    <mat-form-field class="form-field-verify">
+        <input type="text" formControlName="five" #five maxlength="1" matInput placeholder="0">
+    </mat-form-field>
+    
+    <br />
+    
+    <button type="submit" [disabled]="!formVerify.valid" mat-raised-button color="primary">CONFIRMAR</button>
+</form>

@@ -22,4 +22,14 @@ export class AutenticationService extends BaseService {
     return this.httpClientService.post(uri, body);
   }
 
+  verifyCode(code: string) : Observable<any>{
+    const uri = this.BaseUrl + "client/verify"
+    const body = { code };
+    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.httpClientService.post(uri, body);
+  }
+
 }

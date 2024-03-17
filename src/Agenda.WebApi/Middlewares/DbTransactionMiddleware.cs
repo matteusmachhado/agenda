@@ -9,11 +9,13 @@ namespace Agenda.WebApi.Middlewares
     public class DbTransactionMiddleware
     {
         private readonly RequestDelegate _next;
-        
+        private readonly ILogger<DbTransactionMiddleware> _logger;
 
-        public DbTransactionMiddleware(RequestDelegate next)
+        public DbTransactionMiddleware(RequestDelegate next,
+            ILogger<DbTransactionMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext httpContext, AgendaDbContext agendaDbContext)
@@ -47,6 +49,7 @@ namespace Agenda.WebApi.Middlewares
             catch (Exception e)
             {
                 transaction.Rollback();
+                _logger.LogError(e, $"Error {e.Message}");
             }
             finally
             {

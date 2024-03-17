@@ -28,13 +28,13 @@ namespace Agenda.Domain.Features.Client.Commands.VerifyCode
 
             if (verificationCode is null)
             {
-                request.ValidationResult.Errors.Add(new ValidationFailure(string.Empty, $"{request.Code} inválido."));
+                request.ValidationResult.Errors.Add(new ValidationFailure(string.Empty, $"Código {request.Code} inválido."));
                 return request.ValidationResult;
             }
 
             if (verificationCode.CreateDate.AddSeconds(_verificationCodeSetting.Timer) < DateTime.Now)
             {
-                request.ValidationResult.Errors.Add(new ValidationFailure(string.Empty, $"{request.Code} expirou."));
+                request.ValidationResult.Errors.Add(new ValidationFailure(string.Empty, $"Código {request.Code} expirou."));
                 return request.ValidationResult;
             }
 

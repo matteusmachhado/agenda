@@ -11,7 +11,7 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCodeSMS
                 .NotNull()
                 .NotEmpty()
                 .Must(ValidPhoneNumber)
-                .WithMessage("'{PropertyValue}' inválido.");
+                .WithMessage("{PropertyValue} inválido");
         }
 
         private bool ValidPhoneNumber(string phoneNumber)

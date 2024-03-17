@@ -32,7 +32,8 @@
             "styles": [
               "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",

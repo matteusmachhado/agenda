@@ -3,6 +3,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AutenticationService } from '../../services/autentication.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class VerifyFormComponent  {
 
   private formBuilderService = inject(NonNullableFormBuilder);
   private autenticationService = inject(AutenticationService);
+  private spinnerService = inject(NgxSpinnerService);
   
   @ViewChild("first") first!: ElementRef;
   @ViewChild("second") second!: ElementRef;
@@ -63,8 +65,9 @@ export class VerifyFormComponent  {
   }
   
   verify(){
+    this.spinnerService.show()
     const code = `${this.formVerify.value.first}${this.formVerify.value.second}${this.formVerify.value.three}${this.formVerify.value.four}${this.formVerify.value.five}`;
-    this.autenticationService.verifyCode(code).subscribe();
+    this.autenticationService.verifyCode(code).subscribe(res => this.spinnerService.hide());
   }
 
 }

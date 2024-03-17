@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AutenticationService } from '../../services/autentication.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class LoginFormComponent {
   private formBuilderService = inject(FormBuilder);
   private autenticationService = inject(AutenticationService);
   private router = inject(Router);
+  private spinnerService = inject(NgxSpinnerService);
 
   formLogin = this.formBuilderService.group({
     phoneNumber: this.formBuilderService.nonNullable.control('', {
@@ -38,9 +40,13 @@ export class LoginFormComponent {
   });
 
   login(){
+    this.spinnerService.show();
     const phoneNumber = this.formLogin.value.phoneNumber;
     if(!phoneNumber) return;
-    this.autenticationService.sendCode(phoneNumber).subscribe(res => this.router.navigate(['/verify']));
+    this.autenticationService.sendCode(phoneNumber).subscribe(() => {
+      this.spinnerService.hide();
+      this.router.navigate(['/verify'])
+    });
   }
 
 }

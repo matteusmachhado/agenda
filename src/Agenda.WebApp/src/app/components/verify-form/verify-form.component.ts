@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AutoFocusDirective } from '../../directives/auto-focus.directive';
 import { AutenticationService } from '../../services/autentication.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { AutenticationService } from '../../services/autentication.service';
     ReactiveFormsModule, 
     MatFormFieldModule, 
     MatInputModule, 
-    MatButtonModule
+    MatButtonModule,
+    AutoFocusDirective
   ],
   templateUrl: './verify-form.component.html',
   styleUrl: './verify-form.component.scss'

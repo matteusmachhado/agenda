@@ -1,7 +1,7 @@
 <form [formGroup]="formVerify" (submit)="verify()">
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="first" #first (keyup)="onKeyFirst($event)" maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="first" #first (keyup)="onKeyFirst($event)" maxlength="1" matInput placeholder="0" AutoFocus>
     </mat-form-field>
 
     <mat-form-field class="form-field-verify">

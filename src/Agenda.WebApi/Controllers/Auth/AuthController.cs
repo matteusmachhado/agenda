@@ -1,5 +1,6 @@
 ﻿using Agenda.Domain.Interfaces;
 using Agenda.Shared.Settings;
+using Agenda.Shared.Utils;
 using Agenda.Shared.ViewModels.Auth;
 using Agenda.WebApi.Configurations;
 using Asp.Versioning;
@@ -92,8 +93,8 @@ namespace Agenda.WebApi.Controllers.Auth
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Name, user.UserName));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToUnixEpochDate().ToString()));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToUnixEpochDate().ToString(), ClaimValueTypes.Integer64));
             foreach (var userRole in userRoles)
             {
                 claims.Add(new Claim("role", userRole));
@@ -123,9 +124,5 @@ namespace Agenda.WebApi.Controllers.Auth
 
             return response;
         }
-
-        private static long ToUnixEpochDate(DateTime date)
-            => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
-
     }
 }

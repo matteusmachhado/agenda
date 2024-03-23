@@ -14,7 +14,7 @@ namespace Agenda.Entities
 
         public VerificationCode()
         {
-            
+
         }
 
         public VerificationCode(TypeOfCheckEnum typeOfCheck, string code)
@@ -25,7 +25,7 @@ namespace Agenda.Entities
             CreateDate = DateTime.Now;
         }
 
-        public static VerificationCode FromPhoneNumber(string phoneNumber, string code) 
+        public static VerificationCode FromPhoneNumber(string phoneNumber, string code)
         {
             var entity = new VerificationCode(TypeOfCheckEnum.SMS, code);
             entity.PhoneNumber = phoneNumber;
@@ -42,6 +42,13 @@ namespace Agenda.Entities
         }
 
         public void Checked() => DateCheck = DateTime.Now;
-        
+
+        public string? GetTypeOfCheck() => TypeCheck switch
+        {
+            TypeOfCheckEnum.SMS => PhoneNumber,
+            TypeOfCheckEnum.Email => Email,
+            _ => string.Empty
+        };
+
     }
 }

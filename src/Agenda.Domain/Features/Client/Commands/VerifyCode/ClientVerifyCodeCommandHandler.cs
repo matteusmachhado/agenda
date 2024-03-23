@@ -1,9 +1,7 @@
 ﻿using Agenda.Data.Interfaces;
 using Agenda.Domain.Interfaces;
 using Agenda.Shared.DTOs;
-using Agenda.Shared.Enums;
 using Agenda.Shared.Settings;
-using FluentValidation.Results;
 using MediatR;
 using Microsoft.Extensions.Options;
 
@@ -55,7 +53,7 @@ namespace Agenda.Domain.Features.Client.Commands.VerifyCode
 
             await Commit();
 
-            return verificationCode.TypeCheck == TypeOfCheckEnum.SMS ? verificationCode.PhoneNumber : verificationCode.Email;
+            return verificationCode.GetTypeOfCheck();
         }
     }
 }

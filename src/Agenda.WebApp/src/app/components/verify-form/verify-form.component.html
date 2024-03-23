@@ -1,23 +1,23 @@
 <form [formGroup]="formVerify" (submit)="verify()">
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="first" #first (keyup)="onKeyFirst()" maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="first" #first (keyup)="onKeyFirst($event)" maxlength="1" matInput placeholder="0">
     </mat-form-field>
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="second" #second (keyup)="onKeySecond()" maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="second" #second (keyup)="onKeySecond($event)" maxlength="1" matInput placeholder="0">
     </mat-form-field>
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="three" #three (keyup)="onKeyThree()" maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="three" #three (keyup)="onKeyThree($event)" maxlength="1" matInput placeholder="0">
     </mat-form-field>
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="four" #four (keyup)="onKeyFour()" maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="four" #four (keyup)="onKeyFour($event)" maxlength="1" matInput placeholder="0">
     </mat-form-field>
 
     <mat-form-field class="form-field-verify">
-        <input type="text" formControlName="five" #five maxlength="1" matInput placeholder="0">
+        <input type="text" formControlName="five" #five (keyup)="onKeyFive($event)" maxlength="1" matInput placeholder="0">
     </mat-form-field>
     
     <br />

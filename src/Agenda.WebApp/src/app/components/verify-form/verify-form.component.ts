@@ -48,19 +48,28 @@ export class VerifyFormComponent  {
     }),
   });
 
-  onKeyFirst(){
+  onKeyFirst(event: KeyboardEvent){
+    this.formVerify.patchValue({first: event.key});
     this.second.nativeElement.focus();
   }
 
-  onKeySecond(){
+  onKeySecond(event: KeyboardEvent){
+    this.formVerify.patchValue({second: event.key});
     this.three.nativeElement.focus();
   }
 
-  onKeyThree(){
+  onKeyThree(event: KeyboardEvent){
+    this.formVerify.patchValue({three: event.key});
     this.four.nativeElement.focus();
   }
 
-  onKeyFour(){
+  onKeyFour(event: KeyboardEvent){
+    this.formVerify.patchValue({four: event.key});
+    this.five.nativeElement.focus();
+  }
+
+  onKeyFive(event: KeyboardEvent){
+    this.formVerify.patchValue({five: event.key});
     this.five.nativeElement.focus();
   }
   

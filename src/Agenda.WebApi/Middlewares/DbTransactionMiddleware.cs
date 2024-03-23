@@ -1,8 +1,10 @@
 ﻿using Agenda.Data.Contexts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Data;
+using System.Net;
 
 namespace Agenda.WebApi.Middlewares
 {
@@ -49,12 +51,23 @@ namespace Agenda.WebApi.Middlewares
             catch (Exception e)
             {
                 transaction.Rollback();
+                await HandleExceptionAsync(httpContext, e);
                 _logger.LogError(e, $"Error {e.Message}");
             }
             finally
             {
                 transaction?.Dispose();
             }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+            await context.Response.WriteAsJsonAsync(new
+            {
+                errors = new string[] { "Erro inesperado. Por favor, tente novamente mais tarde ou entre em contato com o suporte." }
+            });
         }
     }
 

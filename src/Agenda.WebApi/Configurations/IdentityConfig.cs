@@ -22,9 +22,12 @@ namespace Agenda.WebApi.Configurations
                .AddErrorDescriber<IdentityMensagensPortugues>()
                .AddDefaultTokenProviders();
 
-            // JWT 
+            // JWT
             var jwtSettingSection = configuration.GetSection("Jwt");
-            services.Configure<JwtSetting>(jwtSettingSection);
+            services.AddOptions<JwtSetting>()
+                .BindConfiguration("Jwt")
+                .ValidateDataAnnotations()
+                .ValidateOnStart();
 
             var jwtSetting = jwtSettingSection.Get<JwtSetting>();
             var key = Encoding.ASCII.GetBytes(jwtSetting.Secret);

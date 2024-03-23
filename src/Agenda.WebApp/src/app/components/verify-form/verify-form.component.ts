@@ -48,27 +48,36 @@ export class VerifyFormComponent  {
     }),
   });
 
+  validation(event: KeyboardEvent) : boolean{
+    return (/^[a-zA-Z0-9]{1}$/.test(event.key));
+  }
+
   onKeyFirst(event: KeyboardEvent){
+    if(!this.validation(event)) return;
     this.formVerify.patchValue({first: event.key});
     this.second.nativeElement.focus();
   }
 
   onKeySecond(event: KeyboardEvent){
+    if(!this.validation(event)) return;
     this.formVerify.patchValue({second: event.key});
     this.three.nativeElement.focus();
   }
 
   onKeyThree(event: KeyboardEvent){
+    if(!this.validation(event)) return;
     this.formVerify.patchValue({three: event.key});
     this.four.nativeElement.focus();
   }
 
   onKeyFour(event: KeyboardEvent){
+    if(!this.validation(event)) return;
     this.formVerify.patchValue({four: event.key});
     this.five.nativeElement.focus();
   }
 
   onKeyFive(event: KeyboardEvent){
+    if(!this.validation(event)) return;
     this.formVerify.patchValue({five: event.key});
     this.five.nativeElement.focus();
   }

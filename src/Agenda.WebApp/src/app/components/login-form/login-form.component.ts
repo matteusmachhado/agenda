@@ -16,14 +16,14 @@ import { AutenticationService } from '../../services/autentication.service';
   selector: 'login-form',
   standalone: true,
   imports: [
-    ReactiveFormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     MatIconModule,
     NgxMaskDirective,
   ],
-  providers:[
+  providers: [
     provideNgxMask(),
   ],
   templateUrl: './login-form.component.html',
@@ -31,7 +31,7 @@ import { AutenticationService } from '../../services/autentication.service';
 })
 export class LoginFormComponent {
 
-  test:string = '';
+  country: string = '+55';
 
   private formBuilderService = inject(FormBuilder);
   private autenticationService = inject(AutenticationService);
@@ -45,16 +45,18 @@ export class LoginFormComponent {
     })
   });
 
-  login(){
-    this.spinnerService.show();
-    const phoneNumber = `+55${this.formLogin.value.phoneNumber}`;
-    if(!phoneNumber) return;
-    this.autenticationService.sendCode(phoneNumber).subscribe(() => {
+  login(type: TypeOfCheckEnum) {
+    const state: DataOfVerify = { sendTo: this.getSendTo(type), typeOfCheck: type }
+    this.autenticationService.sendCode(state.sendTo).subscribe(() => {
       this.spinnerService.hide();
-      this.toastr.success('Seu código foi enviado com sucesso!')
-      const state:DataOfVerify = { sendTo: phoneNumber, typeOfCheck: TypeOfCheckEnum.SMS }
       this.router.navigate(['/verify'], { state });
+      this.toastr.success('Seu código foi enviado com sucesso!');
     });
+  }
+
+  getSendTo(type: TypeOfCheckEnum): string {
+    const phoneNumber = `${this.country}${this.formLogin.value.phoneNumber}`;
+    return TypeOfCheckEnum.SMS == type ? phoneNumber : '';
   }
 
 }

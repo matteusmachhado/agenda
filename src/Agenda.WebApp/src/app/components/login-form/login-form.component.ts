@@ -46,10 +46,11 @@ export class LoginFormComponent {
   });
 
   login(type: TypeOfCheckEnum) {
-    const state: DataOfVerify = { sendTo: this.getSendTo(type), typeOfCheck: type }
-    this.autenticationService.sendCode(state.sendTo).subscribe(() => {
+    const data: DataOfVerify = { sendTo: this.getSendTo(type), typeOfCheck: type }
+    this.autenticationService.sendCode(data.sendTo).subscribe(() => {
       this.spinnerService.hide();
-      this.router.navigate(['/verify'], { state });
+      this.router.navigate(['/verify']);
+      this.autenticationService.setDataOfVerify(data);
       this.toastr.success('Seu código foi enviado com sucesso!');
     });
   }

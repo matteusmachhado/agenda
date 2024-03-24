@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DataOfVerify } from '../interfaces/data-of-verify';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AutenticationService extends BaseService {
 
   constructor(private httpClientService: HttpClient) {
     super();
-   }
+  }
 
   sendCode(phoneNumber: string) : Observable<any>{
     const uri = this.BaseUrl + "client/send-verification-code-sms"
@@ -30,6 +31,15 @@ export class AutenticationService extends BaseService {
     headers.append('Content-Type', 'application/json');
 
     return this.httpClientService.post(uri, body);
+  }
+
+  setDataOfVerify(data: DataOfVerify){
+    localStorage.setItem("data", JSON.stringify(data));
+  }
+
+  getDataOfVerify(): DataOfVerify{
+    const data = localStorage.getItem("data");
+    return data ? JSON.parse(data) : null;
   }
 
 }

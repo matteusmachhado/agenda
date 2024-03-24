@@ -7,6 +7,6 @@ import { VerifyComponent } from './pages/verify/verify.component';
 export const routes: Routes = [
     { path: '', component: AppComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'verify/:sendTo', component: VerifyComponent },
+    { path: 'verify', component: VerifyComponent },
     { path: '**', component: NotFoundComponent }
 ];

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { TypeOfCheckEnum } from '../../Enums/type-of-check';
+import { DataOfVerify } from '../../interfaces/data-of-verify';
 import { AutenticationService } from '../../services/autentication.service';
 
 @Component({
@@ -50,7 +52,8 @@ export class LoginFormComponent {
     this.autenticationService.sendCode(phoneNumber).subscribe(() => {
       this.spinnerService.hide();
       this.toastr.success('Seu código foi enviado com sucesso!')
-      this.router.navigate(['/verify', phoneNumber]);
+      const state:DataOfVerify = { sendTo: phoneNumber, typeOfCheck: TypeOfCheckEnum.SMS }
+      this.router.navigate(['/verify'], { state });
     });
   }
 

@@ -19,7 +19,7 @@ import { AutenticationService } from '../../services/autentication.service';
     MatInputModule, 
     MatButtonModule,
     MatIconModule,
-    NgxMaskDirective
+    NgxMaskDirective,
   ],
   providers:[
     provideNgxMask(),
@@ -28,6 +28,8 @@ import { AutenticationService } from '../../services/autentication.service';
   styleUrl: './login-form.component.scss',
 })
 export class LoginFormComponent {
+
+  test:string = '';
 
   private formBuilderService = inject(FormBuilder);
   private autenticationService = inject(AutenticationService);
@@ -43,12 +45,12 @@ export class LoginFormComponent {
 
   login(){
     this.spinnerService.show();
-    const phoneNumber = this.formLogin.value.phoneNumber;
+    const phoneNumber = `+55${this.formLogin.value.phoneNumber}`;
     if(!phoneNumber) return;
     this.autenticationService.sendCode(phoneNumber).subscribe(() => {
       this.spinnerService.hide();
       this.toastr.success('Seu código foi enviado com sucesso!')
-      this.router.navigate(['/verify'])
+      this.router.navigate(['/verify', phoneNumber]);
     });
   }
 

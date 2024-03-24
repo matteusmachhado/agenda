@@ -14,7 +14,7 @@ export class AutenticationService extends BaseService {
 
   sendCode(phoneNumber: string) : Observable<any>{
     const uri = this.BaseUrl + "client/send-verification-code-sms"
-    const body = { phoneNumber : `+55${phoneNumber}` };
+    const body = { phoneNumber };
     
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');

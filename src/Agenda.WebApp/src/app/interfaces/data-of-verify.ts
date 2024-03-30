@@ -1,4 +1,4 @@
-import { TypeOfCheckEnum } from "../Enums/type-of-check";
+import { TypeOfCheckEnum } from "../enums/type-of-check";
 
 export interface DataOfVerify {
     sendTo: string,

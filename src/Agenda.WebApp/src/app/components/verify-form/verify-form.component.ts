@@ -1,11 +1,14 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DialogVerifyComponent } from '../../dialogs/verify/verify.component';
 import { AutoFocusDirective } from '../../directives/auto-focus.directive';
 import { AutenticationService } from '../../services/autentication.service';
+import { TimerService } from '../../services/timer.service';
 
 @Component({
   selector: 'verify-form',
@@ -25,6 +28,8 @@ export class VerifyFormComponent  {
   private formBuilderService = inject(NonNullableFormBuilder);
   private autenticationService = inject(AutenticationService);
   private spinnerService = inject(NgxSpinnerService);
+  private dialogVerify = inject(MatDialogRef<DialogVerifyComponent>);
+  private timerService = inject(TimerService);
   
   @ViewChild("first") first!: ElementRef;
   @ViewChild("second") second!: ElementRef;
@@ -87,7 +92,11 @@ export class VerifyFormComponent  {
   verify(){
     this.spinnerService.show()
     const code = `${this.formVerify.value.first}${this.formVerify.value.second}${this.formVerify.value.three}${this.formVerify.value.four}${this.formVerify.value.five}`;
-    this.autenticationService.verifyCode(code).subscribe(res => this.spinnerService.hide());
+    this.autenticationService.verifyCode(code).subscribe((res) => {
+      this.dialogVerify.close();
+      this.timerService.clearTimer();
+      this.spinnerService.hide();
+    });
   }
 
 }

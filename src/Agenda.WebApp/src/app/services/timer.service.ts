@@ -5,9 +5,9 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TimerServiceService extends BaseService  {
+export class TimerService extends BaseService  {
 
-  public timer: number = 2;
+  public timer: number = 1;
   private key: string = 'timer';
 
   constructor() {

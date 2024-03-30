@@ -7,7 +7,7 @@ import { BaseService } from './base.service';
 })
 export class TimerService extends BaseService  {
 
-  public timer: number = 1;
+  public timer: number = 2;
   private key: string = 'timer';
 
   constructor() {

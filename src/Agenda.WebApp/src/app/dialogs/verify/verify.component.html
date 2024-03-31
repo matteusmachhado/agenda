@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>
+<h1 mat-dialog-title class="text-center">
     Enviado para 
     @if (data.typeOfVerify == typeOfVerifyEnum.SMS) { <span>{{ data.sendTo | mask: '+00 (00) 0 0000-0000' }}</span> } 
     @else if (data.typeOfVerify == typeOfVerifyEnum.Email) { <span>{{ data.sendTo }}</span> }
@@ -6,9 +6,15 @@
 <div mat-dialog-content>
     <div class="form-verify">
         <p>
-            Insira abaixo o código que você receberá por SMS
+            Insira abaixo o código que você receberá por 
+            @if (data.typeOfVerify == typeOfVerifyEnum.SMS) { <b>SMS</b> } 
+            @else if (data.typeOfVerify == typeOfVerifyEnum.Email) { <b>E-mail</b> }
         </p>
         <verify-form />
-        {{ minutes }} || {{ seconds }}
+        <br>
+        <button class="btn-remaining-time" mat-stroked-button disabled><mat-icon>timer</mat-icon> {{ minutes }} : {{ seconds }}</button>
+        <p>
+            Para reenviar aguarde alguns instantes e tente novamente.
+        </p>
     </div>
 </div>

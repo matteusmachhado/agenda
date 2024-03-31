@@ -1,5 +1,5 @@
 <form [formGroup]="formLogin" (submit)="login()">
-    <mat-tab-group (selectedTabChange)="tabChange($event)">
+    <mat-tab-group [selectedIndex]="selectedTypeOfVerify" (selectedTabChange)="tabChange($event)">
         <mat-tab label="SMS">
             <div class="container-form-tab">
                 <div class="container-title">

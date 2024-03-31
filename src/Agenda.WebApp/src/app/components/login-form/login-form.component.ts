@@ -106,6 +106,7 @@ export class LoginFormComponent implements OnInit {
     dialog.afterClosed().subscribe(() => {
       const dataOfVerify = this.autenticationService.getDataOfVerify();
       if (dataOfVerify) {
+        this.selectedTypeOfVerify = dataOfVerify.typeOfVerify;
         if(dataOfVerify.typeOfVerify == this.typeOfVerifyEnum.SMS) this.formLogin.patchValue({ phoneNumber: dataOfVerify.sendTo.substring(3) });
         else if(dataOfVerify.typeOfVerify == this.typeOfVerifyEnum.Email) this.formLogin.patchValue({ email: dataOfVerify.sendTo });
       }

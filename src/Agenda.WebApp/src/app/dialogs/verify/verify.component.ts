@@ -1,6 +1,7 @@
 import { Component, Inject, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { VerifyFormComponent } from "../../components/verify-form/verify-form.component";
 import { TypeOfVerifyEnum } from '../../enums/type-of-verify';
@@ -18,6 +19,7 @@ import { TimerService } from '../../services/timer.service';
   imports: [
     NgxMaskPipe,
     MatButtonModule,
+    MatIconModule,
     MatDialogModule,
     NgxMaskDirective,
     VerifyFormComponent

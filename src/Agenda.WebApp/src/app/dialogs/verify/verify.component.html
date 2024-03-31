@@ -1,4 +1,8 @@
-<h1 mat-dialog-title>Enviado para <span>{{ data.sendTo | mask: '+00 (00) 0 0000-0000' }}</span></h1>
+<h1 mat-dialog-title>
+    Enviado para 
+    @if (data.typeOfVerify == typeOfVerifyEnum.SMS) { <span>{{ data.sendTo | mask: '+00 (00) 0 0000-0000' }}</span> } 
+    @else if (data.typeOfVerify == typeOfVerifyEnum.Email) { <span>{{ data.sendTo }}</span> }
+</h1>
 <div mat-dialog-content>
     <div class="form-verify">
         <p>

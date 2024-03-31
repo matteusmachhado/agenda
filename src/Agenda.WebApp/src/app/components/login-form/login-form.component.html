@@ -1,10 +1,31 @@
-<form [formGroup]="formLogin" (submit)="login(0)">
-
-    <mat-form-field class="full-width">
-        <span matTextPrefix>+55 &nbsp;</span>
-        <input type="tel" mask="(00) 0 0000-0000" formControlName="phoneNumber" matInput placeholder="(00) 0 0000-0000">
-        <mat-icon matSuffix>phone_iphone</mat-icon>
-    </mat-form-field>
+<form [formGroup]="formLogin" (submit)="login()">
+    <mat-tab-group (selectedTabChange)="tabChange($event)">
+        <mat-tab label="SMS">
+            <div class="container-form-tab">
+                <div class="container-title">
+                    Informe seu número de telefone
+                </div>
+                <mat-form-field class="full-width">
+                    <span matTextPrefix>+55 &nbsp;</span>
+                    <input type="tel" mask="(00) 0 0000-0000" formControlName="phoneNumber" matInput 
+                    placeholder="(00) 0 0000-0000" [required]="selectedTypeOfVerify == typeOfVerifyEnum.SMS">
+                    <mat-icon matSuffix>phone_iphone</mat-icon>
+                </mat-form-field>
+            </div>
+        </mat-tab>
+        <mat-tab label="E-mail">
+            <div class="container-form-tab">
+                <div class="container-title">
+                    Informe seu endereço de e-mail
+                </div>
+                <mat-form-field class="full-width">
+                    <input type="email" formControlName="email" matInput 
+                    placeholder="seu.email@email.com" [required]="selectedTypeOfVerify == typeOfVerifyEnum.Email">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 
     <button type="submit" [disabled]="!formLogin.valid" mat-raised-button color="primary">Enviar código</button>
 </form>

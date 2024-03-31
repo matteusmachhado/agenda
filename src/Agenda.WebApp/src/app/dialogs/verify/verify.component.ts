@@ -3,6 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { VerifyFormComponent } from "../../components/verify-form/verify-form.component";
+import { TypeOfVerifyEnum } from '../../enums/type-of-verify';
+import { DataOfVerify } from '../../interfaces/data-of-verify';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
@@ -23,12 +25,13 @@ import { TimerService } from '../../services/timer.service';
 })
 export class DialogVerifyComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { sendTo: string }) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DataOfVerify) { }
 
   private timerInterval: any;
   private timerService = inject(TimerService);
   private dialog = inject(MatDialogRef<DialogVerifyComponent>);
 
+  typeOfVerifyEnum: typeof TypeOfVerifyEnum = TypeOfVerifyEnum;
   seconds: string = '00';
   minutes: string = '00';
 

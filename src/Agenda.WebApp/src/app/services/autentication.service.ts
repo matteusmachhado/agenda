@@ -13,9 +13,19 @@ export class AutenticationService extends BaseService {
     super();
   }
 
-  sendCode(phoneNumber: string) : Observable<any>{
+  sendCodeBySMS(phoneNumber: string) : Observable<any>{
     const uri = this.BaseUrl + "client/send-verification-code-sms"
     const body = { phoneNumber };
+    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.httpClientService.post(uri, body);
+  }
+
+  sendCodeByEmail(email: string) : Observable<any>{
+    const uri = this.BaseUrl + "client/send-verification-code-email"
+    const body = { email };
     
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');

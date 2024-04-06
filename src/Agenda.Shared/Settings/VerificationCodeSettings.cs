@@ -2,7 +2,7 @@
 
 namespace Agenda.Shared.Settings
 {
-    public class VerificationCodeSetting
+    public class VerificationCodeSettings
     {
         [Required]
         public int CaracteresLength  { get; set; }

@@ -24,12 +24,12 @@ namespace Agenda.WebApi.Configurations
 
             // JWT
             var jwtSettingSection = configuration.GetSection("Jwt");
-            services.AddOptions<JwtSetting>()
+            services.AddOptions<JwtSettings>()
                 .BindConfiguration("Jwt")
                 .ValidateDataAnnotations()
                 .ValidateOnStart();
 
-            var jwtSetting = jwtSettingSection.Get<JwtSetting>();
+            var jwtSetting = jwtSettingSection.Get<JwtSettings>();
             var key = Encoding.ASCII.GetBytes(jwtSetting.Secret);
 
             services.AddAuthentication(x =>

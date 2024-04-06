@@ -20,14 +20,14 @@ namespace Agenda.WebApi.Controllers.Auth
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly JwtSetting _jwtSetting;
+        private readonly JwtSettings _jwtSetting;
 
         public AuthController(
             INotificationService notificadorService,
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IUser user,
-            IOptions<JwtSetting> jwtSetting) : base(notificadorService,
+            IOptions<JwtSettings> jwtSetting) : base(notificadorService,
                 user)
         {
             _signInManager = signInManager;

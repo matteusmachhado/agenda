@@ -8,10 +8,10 @@ namespace Agenda.Data.Contexts
 {
     public class AgendaAuthDbContext : IdentityDbContext
     {
-        private readonly UserDefaultSetting _userDefault;
+        private readonly UserDefaultSettings _userDefault;
 
         public AgendaAuthDbContext(DbContextOptions<AgendaAuthDbContext> options,
-            IOptions<UserDefaultSetting> userDefault
+            IOptions<UserDefaultSettings> userDefault
             ) : base(options) 
         {
             _userDefault = userDefault.Value;

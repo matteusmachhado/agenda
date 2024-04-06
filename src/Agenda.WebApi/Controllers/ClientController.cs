@@ -25,12 +25,12 @@ namespace Agenda.WebApi.Controllers
     public class ClientController : BaseController
     {
         private readonly IMediator _mediator;
-        private readonly JwtSetting _jwtSetting;
+        private readonly JwtSettings _jwtSetting;
 
         public ClientController(INotificationService notifier,
             IMediator mediator,
             IUser user,
-            IOptions<JwtSetting> jwtSetting) : base(notifier, user)
+            IOptions<JwtSettings> jwtSetting) : base(notifier, user)
         {
             _mediator = mediator;
             _jwtSetting = jwtSetting.Value;

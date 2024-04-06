@@ -2,7 +2,7 @@
 
 namespace Agenda.Shared.Settings
 {
-    public record TwilioSetting()
+    public record TwilioSettings()
     {
         [Required]
         public string AccountSID { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Agenda.Shared.Settings
 {
-    public class UserDefaultSetting
+    public class UserDefaultSettings
     {
         [Required]
         public string UserName { get; set; }

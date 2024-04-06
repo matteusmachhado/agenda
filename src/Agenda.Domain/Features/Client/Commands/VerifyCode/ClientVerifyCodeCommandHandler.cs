@@ -9,12 +9,12 @@ namespace Agenda.Domain.Features.Client.Commands.VerifyCode
 {
     public class ClientVerifyCodeCommandHandler : BaseCommandHandler, IRequestHandler<ClientVerifyCodeCommand, string>
     {
-        private readonly VerificationCodeSetting _verificationCodeSetting;
+        private readonly VerificationCodeSettings _verificationCodeSetting;
         private readonly IVerificationCodeRepository _verificationCodeRepository;
         private readonly INotificationService _notifier;
 
         public ClientVerifyCodeCommandHandler(IUnitOfWork _uow,
-            IOptions<VerificationCodeSetting> verificationCodeSetting,
+            IOptions<VerificationCodeSettings> verificationCodeSetting,
             IVerificationCodeRepository verificationCodeRepository,
             INotificationService notifier
             ) : base(_uow)

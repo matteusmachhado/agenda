@@ -9,11 +9,11 @@ namespace Agenda.Domain.Services
 {
     public class TwilioService : BaseService, ITwilioService
     {
-        private readonly TwilioSetting _twilioSetting;
+        private readonly TwilioSettings _twilioSetting;
 
         public TwilioService(INotificationService notificador,
             IUnitOfWork unitOfWork, 
-            IOptions<TwilioSetting> twilioSetting) : base (notificador, unitOfWork)
+            IOptions<TwilioSettings> twilioSetting) : base (notificador, unitOfWork)
         {
             _twilioSetting = twilioSetting.Value;
         }

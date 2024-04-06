@@ -20,22 +20,22 @@ namespace Agenda.WebApi.Configurations
 
             // User Default 
             var userDefaultSetting = configuration.GetSection("UserDefault");
-            services.Configure<UserDefaultSetting>(userDefaultSetting);
+            services.Configure<UserDefaultSettings>(userDefaultSetting);
 
             // User Default
-            services.AddOptions<UserDefaultSetting>()
+            services.AddOptions<UserDefaultSettings>()
                .BindConfiguration("UserDefault")
                .ValidateDataAnnotations()
                .ValidateOnStart();
 
             // Twilio
-            services.AddOptions<TwilioSetting>()
+            services.AddOptions<TwilioSettings>()
                 .BindConfiguration("Twilio")
                 .ValidateDataAnnotations()
                 .ValidateOnStart();
 
             // Verification Code
-            services.AddOptions<VerificationCodeSetting>()
+            services.AddOptions<VerificationCodeSettings>()
                 .BindConfiguration("VerificationCode")
                 .ValidateDataAnnotations()
                 .ValidateOnStart();

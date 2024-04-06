@@ -2,7 +2,7 @@
 
 namespace Agenda.Shared.Settings
 {
-    public class JwtSetting
+    public class JwtSettings
     {
         [Required]
         public string Secret { get; set; }

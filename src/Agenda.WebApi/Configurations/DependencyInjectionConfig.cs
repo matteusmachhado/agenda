@@ -16,6 +16,7 @@ namespace Agenda.WebApi.Configurations
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<ITwilioService, TwilioService>();
             services.AddScoped<IVerificationCodeService, VerificationCodeService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             // User Default 
             var userDefaultSetting = configuration.GetSection("UserDefault");
@@ -36,6 +37,12 @@ namespace Agenda.WebApi.Configurations
             // Verification Code
             services.AddOptions<VerificationCodeSetting>()
                 .BindConfiguration("VerificationCode")
+                .ValidateDataAnnotations()
+                .ValidateOnStart();
+
+            // Email
+            services.AddOptions<EmailSettings>()
+                .BindConfiguration("Email")
                 .ValidateDataAnnotations()
                 .ValidateOnStart();
 

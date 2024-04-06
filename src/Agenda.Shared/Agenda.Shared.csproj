@@ -7,4 +7,14 @@
     <NoWarn>CS8618</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Templates\Email\VerificationCode.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\Email\VerificationCode.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

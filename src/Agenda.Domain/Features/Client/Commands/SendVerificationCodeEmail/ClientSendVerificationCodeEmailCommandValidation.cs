@@ -8,7 +8,8 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCodeEmail
         {
             RuleFor(c => c.Email)
                 .NotNull()
-                .NotEmpty();
+                .NotEmpty()
+                .EmailAddress();
         }
     }
 }

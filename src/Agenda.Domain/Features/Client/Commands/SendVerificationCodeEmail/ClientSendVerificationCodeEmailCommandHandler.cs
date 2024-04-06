@@ -41,11 +41,15 @@ namespace Agenda.Domain.Features.Client.Commands.SendVerificationCodeEmail
         private MailMessage GetTemplateMailMessage(string email, string code) 
         {
             var template = FilesUtil.LoadTemplateEmail("VerificationCode");
+            var body = template.ReplaceVariablesTemplate(new Dictionary<string, string>()
+            {
+                { "verification_code", code }
+            });
 
             var message = new MailMessage();
             message.To.Add(email);
             message.Subject = "Código de Verificação para Agenda";
-            message.Body = template;
+            message.Body = body;
             message.IsBodyHtml = true;
             message.BodyEncoding = Encoding.UTF8;
 

@@ -100,6 +100,7 @@ export class LoginFormComponent implements OnInit {
   openDialogVerify(sendTo: string, typeOfVerify: TypeOfVerifyEnum) {
     const dialog = this.dialog.open(DialogVerifyComponent, { 
       disableClose: true, 
+      width: '550px',
       data: { sendTo, typeOfVerify }
     });
 

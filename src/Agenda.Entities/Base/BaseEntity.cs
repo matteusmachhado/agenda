@@ -1,5 +1,10 @@
-﻿namespace Agenda.Entities.Base
+﻿using MediatR;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Agenda.Entities.Base
 {
+    public interface IDomainEvent : INotification { }
+
     public abstract class BaseEntity
     {
         public Guid Id { get; set; }
@@ -7,6 +12,10 @@
         public DateTime? UpdateDate { get; set; }
         public Guid CreateUserId { get; set; }
         public Guid? UpdateUserId { get; set; }
+
+        [NotMapped]
+        public List<IDomainEvent> DomainEvents { get; } = new List<IDomainEvent>();
+
 
         protected BaseEntity()
         {
@@ -42,6 +51,11 @@
         public override int GetHashCode()
         {
             return GetType().GetHashCode() * 907 + Id.GetHashCode();
+        }
+
+        public void QueueDomainEvent(IDomainEvent @event)
+        {
+            DomainEvents.Add(@event);
         }
     }
 }

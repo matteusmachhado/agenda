@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Agenda.Entities\Agenda.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

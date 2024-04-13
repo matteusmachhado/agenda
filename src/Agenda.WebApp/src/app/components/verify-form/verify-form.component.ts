@@ -4,9 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DialogVerifyComponent } from '../../dialogs/verify/verify.component';
 import { AutoFocusDirective } from '../../directives/auto-focus.directive';
+import { ResponseLogin } from '../../interfaces/response-login';
 import { AutenticationService } from '../../services/autentication.service';
 import { TimerService } from '../../services/timer.service';
 
@@ -30,6 +32,7 @@ export class VerifyFormComponent  {
   private spinnerService = inject(NgxSpinnerService);
   private dialogVerify = inject(MatDialogRef<DialogVerifyComponent>);
   private timerService = inject(TimerService);
+  private router = inject(Router);
   
   @ViewChild("first") first!: ElementRef;
   @ViewChild("second") second!: ElementRef;
@@ -92,10 +95,12 @@ export class VerifyFormComponent  {
   verify(){
     this.spinnerService.show()
     const code = `${this.formVerify.value.first}${this.formVerify.value.second}${this.formVerify.value.three}${this.formVerify.value.four}${this.formVerify.value.five}`;
-    this.autenticationService.verifyCode(code).subscribe((res) => {
+    this.autenticationService.verifyCode(code).subscribe((res: ResponseLogin) => {
       this.dialogVerify.close();
       this.timerService.clearTimer();
       this.spinnerService.hide();
+      this.autenticationService.setToken(res);
+      this.router.navigate(['account/profile'])
     });
   }
 

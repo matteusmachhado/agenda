@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import _ from 'lodash';
 import { Observable } from 'rxjs';
 import { DataOfVerify } from '../interfaces/data-of-verify';
+import { ResponseLogin } from '../interfaces/response-login';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -50,6 +52,15 @@ export class AutenticationService extends BaseService {
   getDataOfVerify(): DataOfVerify{
     const data = localStorage.getItem("data");
     return data ? JSON.parse(data) : null;
+  }
+
+  public setToken(response: ResponseLogin): void {
+    sessionStorage.setItem('token', JSON.stringify(response));
+  }
+
+  public getToken(): string | null {
+    const obj = sessionStorage.getItem('token');
+    return _.isNull(obj) ? null : (JSON.parse(obj) as ResponseLogin).accessToken;
   }
 
 }
